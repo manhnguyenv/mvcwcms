@@ -1,0 +1,65 @@
+﻿@model BackEndNewsList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-md-6">
+                        @Html.BootstrapTextBoxFor(m => m.NewsTitle)
+                    </div>
+                    <div class="col-md-6">
+                        @{
+                            NewsCategories newsCategories = new NewsCategories();
+                            var selectListNewsCategories = new SelectList(newsCategories.GetNewsCategories(), "CategoryId", "CategoryName");
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.CategoryId, selectListNewsCategories, MVCwCMS.Resources.Strings.Any)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.BootstrapDropDownListFor(m => m.IsActive, FormHelper.GetSelectListForYesNo(), MVCwCMS.Resources.Strings.Any)
+                    </div>
+                    <div class="col-md-3">
+                        @Html.BootstrapDatePickerFor(m => m.NewsDateFrom)
+                    </div>
+                    <div class="col-md-3">
+                        @Html.BootstrapDatePickerFor(m => m.NewsDateTo)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @Html.BootstrapApplyFilter()
+                    @Html.BootstrapResetFilter()
+                    @Html.BootstrapButtonAdd("/Admin/NewsAddEdit")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.NewsList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+        
+                    WebGridHelper webGrid = new WebGridHelper(Model.NewsList, defaultSort: "NewsDate", sortDirection: SortDirection.Descending, rowsPerPage: 10);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonEdit("/Admin/NewsAddEdit/" + item.NewsId as string + "/")</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonDelete("/Admin/NewsDelete", item.NewsId as object, Server.UrlEncode(item.NewsTitle) as string)</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("", "", @<text><a href="/Admin/NewsComments/@item.NewsId/"><i class="fa fa-comments" data-toggle="tooltip" title="@MVCwCMS.Resources.Strings_News.NewsComments"></i></a></text>, style: "col-10"),
+                            webGrid.ExtendedColumn("", "", @<text><a href="@(Model.FrontEndUrl + item.NewsId + "-" + ExtensionsHelper.ToFriendlyUrlDashedString(item.NewsTitle) + "/")" target="_blank"><i class="fa fa-external-link" data-toggle="tooltip" title="@MVCwCMS.Resources.Strings_News.NewsView"></i></a></text>, style: "col-10"),
+                            webGrid.ExtendedColumn("IsActive", MVCwCMS.Resources.Strings.Active, format: @<text>@Html.BootstrapIsTicked(item.IsActive as bool?)</text>, style: "col-80 text-center"),
+                            webGrid.ExtendedColumn("NewsTitle", MVCwCMS.Resources.Strings_News.NewsTitle),
+                            webGrid.ExtendedColumn("CategoryName", MVCwCMS.Resources.Strings_News.CategoryName),
+                            webGrid.ExtendedColumn("NewsDate", MVCwCMS.Resources.Strings_News.NewsDate, format: @<text>@ExtensionsHelper.ToDateTimeString(item.NewsDate)</text>, style: "col-140")
+                        )
+                    );
+                }
+            }
+        </div>
+    </div>
+</div>

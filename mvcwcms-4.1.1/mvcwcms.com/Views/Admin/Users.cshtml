@@ -1,0 +1,61 @@
+﻿@model BackEndUsersList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-sm-6 col-lg-3">
+                        @Html.BootstrapTextBoxFor(m => m.Username)
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        @Html.BootstrapTextBoxFor(m => m.FullName)
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        @Html.BootstrapTextBoxFor(m => m.Email)
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        @{
+                            Groups groups = new Groups();
+                            var selectListBackEndGroups = new SelectList(groups.GetAllGroups(), "GroupId", "GroupName", Model.GroupId);
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.GroupId, selectListBackEndGroups, MVCwCMS.Resources.Strings.Any)
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+                    @Html.BootstrapApplyFilter()
+                    @Html.BootstrapResetFilter()
+                    @Html.BootstrapButtonAdd("/Admin/UsersAdd")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.UserList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+
+                    WebGridHelper webGrid = new WebGridHelper(Model.UserList, defaultSort: "UserName", sortDirection: SortDirection.Ascending, rowsPerPage: 10);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                                 webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonEdit("/Admin/UsersEdit/" + item.UserName as string)</text>, style: "col-10"),
+                                 webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonDelete("/Admin/UsersDelete", item.UserName as object, item.UserName as string)</text>, style: "col-10"),
+                                 webGrid.ExtendedColumn("UserName", MVCwCMS.Resources.Strings.Username),
+                                 webGrid.ExtendedColumn("FullName", MVCwCMS.Resources.Strings.FullName),
+                                 webGrid.ExtendedColumn("Email", MVCwCMS.Resources.Strings_Subscription.SubscriptionEmail, format: @<text><a href="/Admin/SubscriptionsEdit/@Server.UrlEncode(item.Email)/">@item.Email</a></text>),
+                                 webGrid.ExtendedColumn("GroupName", MVCwCMS.Resources.Strings.Group)
+                        )
+                    );
+                }
+            }
+        </div>
+    </div>
+</div>

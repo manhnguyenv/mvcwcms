@@ -1,0 +1,48 @@
+﻿@model BackEndNewsCategoryList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-sm-6">
+                        @Html.BootstrapTextBoxFor(m => m.CategoryName)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.BootstrapDropDownListFor(m => m.IsActive, FormHelper.GetSelectListForYesNo(), MVCwCMS.Resources.Strings.Any)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @Html.BootstrapApplyFilter()
+                    @Html.BootstrapResetFilter()
+                    @Html.BootstrapButtonAdd("/Admin/NewsCategoriesAddEdit")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.NewsCategoryList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+
+                    WebGridHelper webGrid = new WebGridHelper(Model.NewsCategoryList, defaultSort: "CategoryName", sortDirection: SortDirection.Ascending, rowsPerPage: 10);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonEdit("/Admin/NewsCategoriesAddEdit/" + item.CategoryId as string)</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonDelete("/Admin/NewsCategoriesDelete", item.CategoryId as object, item.CategoryName as string)</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("CategoryName", MVCwCMS.Resources.Strings_News.CategoryName),
+                            webGrid.ExtendedColumn("IsActive", MVCwCMS.Resources.Strings.Active, format: @<text>@Html.BootstrapIsTicked(item.IsActive as bool?)</text>, style: "col-80 text-center")
+                        )
+                    );
+                }
+            }
+        </div>
+    </div>
+</div>

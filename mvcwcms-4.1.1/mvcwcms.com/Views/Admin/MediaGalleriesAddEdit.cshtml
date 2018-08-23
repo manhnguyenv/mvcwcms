@@ -1,0 +1,57 @@
+﻿@model BackEndMediaGalleriesAddEdit
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <text>
+                            @Html.BootstrapSubmit(isConfirmActive: true)
+                            @Html.BootstrapResetForm()
+                        </text>
+                    }
+                    @Html.BootstrapButtonRedirect("/Admin/MediaGalleries", MVCwCMS.Resources.Strings_MediaGalleries.MediaGalleries)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                @Html.BootstrapCheckBoxFor(m => m.IsActive)
+
+                                @Html.HiddenFor(m => m.MediaGalleryCode)
+                                @Html.BootstrapTextBoxFor(m => m.NewMediaGalleryCode, isReadOnly: Model.MediaGalleryCode.IsNotEmptyOrWhiteSpace(), labelTooltip: MVCwCMS.Resources.Strings.TooltipUseOnlyLetters)
+                                
+                                @Html.BootstrapDateTimePickerFor(m => m.PublishDate)
+                            </div>
+                        </div>
+
+                        <ul class="nav nav-tabs">
+                            @for (int i = 0; i < Model.MediaGalleryLanguages.Count; i++)
+                            {
+                                <li class="@(i == 0 ? "active" : "")"><a href="#Tab-@Model.MediaGalleryLanguages[i].LanguageCode" data-toggle="tab">@Model.MediaGalleryLanguages[i].LanguageName</a></li>
+                            }
+                        </ul>
+                        <div class="tab-content">
+                            <br />
+                            @for (int i = 0; i < Model.MediaGalleryLanguages.Count; i++)
+                            {
+                                @Html.HiddenFor(m => m.MediaGalleryLanguages[i].LanguageCode)
+                                @Html.HiddenFor(m => m.MediaGalleryLanguages[i].LanguageName)
+                                <div class="tab-pane fade @(i == 0 ? "in active" : "")" id="Tab-@Model.MediaGalleryLanguages[i].LanguageCode">
+                                    @Html.BootstrapTextBoxFor(m => m.MediaGalleryLanguages[i].MediaGalleryTitle)
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

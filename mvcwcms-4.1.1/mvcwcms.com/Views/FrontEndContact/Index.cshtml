@@ -1,0 +1,39 @@
+﻿@model FrontEndContact
+@using (Html.BootstrapBeginForm(actionName: "Index", controllerName: "Default", isDirtyFormMonitored: false))
+{
+    <div class="panel panel-default">
+        @if (ViewData.IsFormVisible())
+        {
+            <div class="panel-heading">
+                <h2>@Strings_Contact.FormTitle</h2>
+            </div>
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @Html.BootstrapValidationSummary()
+
+                @Html.BootstrapTextBoxFor(m => m.FullName)
+
+                @Html.BootstrapTextBoxFor(m => m.CompanyName)
+
+                @Html.BootstrapTextBoxFor(m => m.PhoneNumber)
+
+                @Html.BootstrapTextBoxFor(m => m.Email)
+
+                @Html.BootstrapTextAreaFor(m => m.Message, rows: 5)
+
+                <div class="hidden">
+                    @Html.BootstrapTextBoxFor(m => m.Notes)
+                </div>
+            </div>
+            <div class="panel-footer">
+                @Html.BootstrapSubmit(className: "btn-success")
+            </div>
+        }
+        else
+        {
+            <div class="panel-body">
+                @Html.BootstrapValidationSummary(IsSuccessItemMarkerVisible: false)
+            </div>
+        }
+    </div>
+}

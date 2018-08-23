@@ -1,0 +1,1062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Attivo</value>
+  </data>
+  <data name="ContentTemplatesAdd" xml:space="preserve">
+    <value>Aggiungi modello contenuto</value>
+  </data>
+  <data name="LanguagesAdd" xml:space="preserve">
+    <value>Aggiungi lingua</value>
+  </data>
+  <data name="CmsPagesAdd" xml:space="preserve">
+    <value>Aggiungi pagina</value>
+  </data>
+  <data name="PageTemplatesAdd" xml:space="preserve">
+    <value>Aggiungi modello pagina</value>
+  </data>
+  <data name="UsersAdd" xml:space="preserve">
+    <value>Aggiungi utente</value>
+  </data>
+  <data name="ApplyFilter" xml:space="preserve">
+    <value>Applica filtro</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambia password</value>
+  </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Pulisci cache</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenuti</value>
+  </data>
+  <data name="ContentTemplates" xml:space="preserve">
+    <value>Modelli contenuto</value>
+  </data>
+  <data name="ContentTemplateTitleAlreadyExists" xml:space="preserve">
+    <value>Il titolo selezionato esiste già</value>
+  </data>
+  <data name="CurrentPasswordNotValid" xml:space="preserve">
+    <value>La password corrente non è valida</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Pannello principale</value>
+  </data>
+  <data name="DataAnnotationsEmailAddress" xml:space="preserve">
+    <value>{0} non contiene un indirizzo e-mail valido</value>
+  </data>
+  <data name="DataAnnotationsRegularExpression" xml:space="preserve">
+    <value>{0} non è valido</value>
+  </data>
+  <data name="DataAnnotationsRequired" xml:space="preserve">
+    <value>{0} è obbligatorio</value>
+  </data>
+  <data name="DataAnnotationsStringLengthMax" xml:space="preserve">
+    <value>{0} non deve eccedere {1} caratteri</value>
+  </data>
+  <data name="DataAnnotationsStringLengthMin" xml:space="preserve">
+    <value>{0} deve contenere almeno {1} caratteri</value>
+  </data>
+  <data name="DataAnnotationsStringLengthRange" xml:space="preserve">
+    <value>{0} deve essere di lunghezza compresa tra {2} e {1} caratteri</value>
+  </data>
+  <data name="DefaultErrorPageTemplate" xml:space="preserve">
+    <value>Modello default di pagina errore</value>
+  </data>
+  <data name="DefaultLanguage" xml:space="preserve">
+    <value>Lingua default</value>
+  </data>
+  <data name="ContentTemplatesDelete" xml:space="preserve">
+    <value>Rimuovi modello contenuto</value>
+  </data>
+  <data name="LanguagesDelete" xml:space="preserve">
+    <value>Rimuovi lingua</value>
+  </data>
+  <data name="CmsPagesDelete" xml:space="preserve">
+    <value>Rimuovi pagina</value>
+  </data>
+  <data name="PageTemplatesDelete" xml:space="preserve">
+    <value>Rimuovi modello pagina</value>
+  </data>
+  <data name="UsersDelete" xml:space="preserve">
+    <value>Rimuovi utente</value>
+  </data>
+  <data name="DomainName" xml:space="preserve">
+    <value>Nome dominio</value>
+  </data>
+  <data name="ContentTemplatesEdit" xml:space="preserve">
+    <value>Modifica modello contenuto</value>
+  </data>
+  <data name="LanguagesEdit" xml:space="preserve">
+    <value>Modifica lingua</value>
+  </data>
+  <data name="CmsPagesEdit" xml:space="preserve">
+    <value>Modifica pagina</value>
+  </data>
+  <data name="PageTemplatesEdit" xml:space="preserve">
+    <value>Modifica modello pagina</value>
+  </data>
+  <data name="UsersEdit" xml:space="preserve">
+    <value>Modifica utente</value>
+  </data>
+  <data name="EmailAlreadyExists" xml:space="preserve">
+    <value>L'email selezionata esiste già</value>
+  </data>
+  <data name="EnterUsernamePassword" xml:space="preserve">
+    <value>Inserisci il tuo nome utente e password</value>
+  </data>
+  <data name="FileManager" xml:space="preserve">
+    <value>Gestione file</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="GlobalConfiguration" xml:space="preserve">
+    <value>Configurazione globale</value>
+  </data>
+  <data name="GoogleSearchCode" xml:space="preserve">
+    <value>Codice per ricerca su Google</value>
+  </data>
+  <data name="GoogleVerificationCode" xml:space="preserve">
+    <value>Codice di verifica Google</value>
+  </data>
+  <data name="IsFileUsed" xml:space="preserve">
+    <value>File usato</value>
+  </data>
+  <data name="ItemDoesNotExist" xml:space="preserve">
+    <value>Dato inesistente</value>
+  </data>
+  <data name="ItemSuccessfullyAdded" xml:space="preserve">
+    <value>Il dato è stato aggiunto correttamente</value>
+  </data>
+  <data name="ItemSuccessfullyDeleted" xml:space="preserve">
+    <value>Il dato è stato cancellato correttamente</value>
+  </data>
+  <data name="ItemSuccessfullyEdited" xml:space="preserve">
+    <value>Il dato è stato modificato correttamente</value>
+  </data>
+  <data name="LanguageCode" xml:space="preserve">
+    <value>Codice lingua</value>
+  </data>
+  <data name="LanguageCodeAlreadyExists" xml:space="preserve">
+    <value>Il codice lingua selezionato esiste già</value>
+  </data>
+  <data name="LanguageName" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Lingue</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Accedi</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Esci</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Meta description</value>
+  </data>
+  <data name="MetaKeywords" xml:space="preserve">
+    <value>Meta keywords</value>
+  </data>
+  <data name="MetaTitle" xml:space="preserve">
+    <value>Meta title</value>
+  </data>
+  <data name="MovePageDownInSameLevel" xml:space="preserve">
+    <value>Sposta pagina giù nello stesso livello</value>
+  </data>
+  <data name="MovePageUpInSameLevel" xml:space="preserve">
+    <value>Sposta pagina sù nello stesso livello</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Notizie</value>
+  </data>
+  <data name="NewWindow" xml:space="preserve">
+    <value>Nuova finestra</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+    <value>Nessun dato trovato. Usare diverse opzioni di ricerca</value>
+  </data>
+  <data name="NotificationEmail" xml:space="preserve">
+    <value>Email notifiche</value>
+  </data>
+  <data name="OfflineCode" xml:space="preserve">
+    <value>Codice off-line</value>
+  </data>
+  <data name="OpenWebsite" xml:space="preserve">
+    <value>Apri sito web</value>
+  </data>
+  <data name="PageCannotBeMoved" xml:space="preserve">
+    <value>La pagina selezionata non può essere spostata</value>
+  </data>
+  <data name="PageContent" xml:space="preserve">
+    <value>Contenuto pagina</value>
+  </data>
+  <data name="PageHasSubPages" xml:space="preserve">
+    <value>La pagina selezionata non può essere cancellata perchè possiede delle sotto pagine</value>
+  </data>
+  <data name="CmsPages" xml:space="preserve">
+    <value>Pagine</value>
+  </data>
+  <data name="PageSegmentAlreadyExists" xml:space="preserve">
+    <value>Il segmento selezionato esiste già</value>
+  </data>
+  <data name="PageTemplateNameAlreadyExists" xml:space="preserve">
+    <value>Il template pagina selezionato esiste già</value>
+  </data>
+  <data name="PageTemplates" xml:space="preserve">
+    <value>Modelli pagina</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordAndConfirmationPasswordDoNotMatch" xml:space="preserve">
+    <value>Password e conferma password non coincidono</value>
+  </data>
+  <data name="PasswordSuccessfullyChanged" xml:space="preserve">
+    <value>La tua password è stata modificata correttamente</value>
+  </data>
+  <data name="ResetFilter" xml:space="preserve">
+    <value>Annulla filtro</value>
+  </data>
+  <data name="Robots" xml:space="preserve">
+    <value>Robots</value>
+  </data>
+  <data name="SameWindow" xml:space="preserve">
+    <value>Stessa finestra</value>
+  </data>
+  <data name="SeoAndTracking" xml:space="preserve">
+    <value>SEO e tracciamento</value>
+  </data>
+  <data name="ServerTimeZone" xml:space="preserve">
+    <value>Fuso orario server</value>
+  </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>Nome sito web</value>
+  </data>
+  <data name="SiteOffline" xml:space="preserve">
+    <value>Sito off-line</value>
+  </data>
+  <data name="StatsScript" xml:space="preserve">
+    <value>Script statistiche</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="SuccessfullyLoggedIn" xml:space="preserve">
+    <value>Autenticazione avvenuta con successo</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="TooltipGoogleAnalyticsTrackingCode" xml:space="preserve">
+    <value>Solitamente utilizzato per Google Analytics</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nome utente</value>
+  </data>
+  <data name="UsernameAlreadyExists" xml:space="preserve">
+    <value>Il nome utente selezionato esiste già</value>
+  </data>
+  <data name="UsernameOrPasswordNotValid" xml:space="preserve">
+    <value>Nome utente e/o password non validi</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Utenti</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Indirizzo</value>
+  </data>
+  <data name="TemplatesAdd" xml:space="preserve">
+    <value>Aggiungi modello pagina</value>
+  </data>
+  <data name="Birthdate" xml:space="preserve">
+    <value>Data di nascita</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="CollapseAll" xml:space="preserve">
+    <value>Riduci tutto</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Nome società</value>
+  </data>
+  <data name="ConfirmationPassword" xml:space="preserve">
+    <value>Conferma nuova password</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Password corrente</value>
+  </data>
+  <data name="DataAnnotationsOnlyLetters" xml:space="preserve">
+    <value>{0} può contenere solo lettere</value>
+  </data>
+  <data name="DataAnnotationsOnlyLettersNumbers" xml:space="preserve">
+    <value>{0} può contenere solo lettere e numeri</value>
+  </data>
+  <data name="DataAnnotationsOnlyNonAccentedLettersNumbersDashes" xml:space="preserve">
+    <value>{0} può contenere solo lettere non accentate, numeri e trattini</value>
+  </data>
+  <data name="DataAnnotationsOnlyNonAccentedLettersNumbersDashesSpaces" xml:space="preserve">
+    <value>{0} può contenere solo lettere non accentate, numeri, trattini e spazi</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ExpandAll" xml:space="preserve">
+    <value>Espandi tutto</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="FooterMenu" xml:space="preserve">
+    <value>Menu basso</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Nome completo</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Gruppo</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Home page</value>
+  </data>
+  <data name="HtmlCode" xml:space="preserve">
+    <value>Codice HTML</value>
+  </data>
+  <data name="JoinDate" xml:space="preserve">
+    <value>Data iscrizione</value>
+  </data>
+  <data name="JoinDateFrom" xml:space="preserve">
+    <value>Data iscrizione (da)</value>
+  </data>
+  <data name="JoinDateTo" xml:space="preserve">
+    <value>Data iscrizione (a)</value>
+  </data>
+  <data name="JoinNewsletter" xml:space="preserve">
+    <value>Iscrizione newsletter</value>
+  </data>
+  <data name="LanguageNameOriginal" xml:space="preserve">
+    <value>Nome lingua originale</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="LeaveEmptyToNotChangePassword" xml:space="preserve">
+    <value>Lasciando il campo vuoto la password resterà invariata</value>
+  </data>
+  <data name="MainMenu" xml:space="preserve">
+    <value>Menu principale</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Messaggio</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nuova password</value>
+  </data>
+  <data name="NewPasswordAndConfirmationPasswordDoNotMatch" xml:space="preserve">
+    <value>Nuova password e conferma nuova password non corrispondono</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="PageId" xml:space="preserve">
+    <value>ID Pagina</value>
+  </data>
+  <data name="PageName" xml:space="preserve">
+    <value>Nome pagina</value>
+  </data>
+  <data name="PageTemplate" xml:space="preserve">
+    <value>Modello pagina</value>
+  </data>
+  <data name="ParentPage" xml:space="preserve">
+    <value>Pagina superiore</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="PostCode" xml:space="preserve">
+    <value>CAP</value>
+  </data>
+  <data name="Restricted" xml:space="preserve">
+    <value>Accesso riservato</value>
+  </data>
+  <data name="Segment" xml:space="preserve">
+    <value>Segmento</value>
+  </data>
+  <data name="SelectAndInsertModuleAtCursor" xml:space="preserve">
+    <value>Aggiungi modulo</value>
+  </data>
+  <data name="ShowInFooterMenu" xml:space="preserve">
+    <value>Menu inferiore</value>
+  </data>
+  <data name="ShowInMainMenu" xml:space="preserve">
+    <value>Menu superiore</value>
+  </data>
+  <data name="ShowInSitemap" xml:space="preserve">
+    <value>Sitemap</value>
+  </data>
+  <data name="Sitemap" xml:space="preserve">
+    <value>Mappa sito</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="TemplateDescription" xml:space="preserve">
+    <value>Descrizione modello</value>
+  </data>
+  <data name="TemplateName" xml:space="preserve">
+    <value>Nome modello</value>
+  </data>
+  <data name="ToggleAll" xml:space="preserve">
+    <value>Riduci/Espandi tutto</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Rimuovi file</value>
+  </data>
+  <data name="DeleteFolder" xml:space="preserve">
+    <value>Rimuovi cartella</value>
+  </data>
+  <data name="NewSubfolder" xml:space="preserve">
+    <value>Nuova sottocartella</value>
+  </data>
+  <data name="RenameFile" xml:space="preserve">
+    <value>Rinomina file</value>
+  </data>
+  <data name="RenameFolder" xml:space="preserve">
+    <value>Rinomina cartella</value>
+  </data>
+  <data name="Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="Error404" xml:space="preserve">
+    <value>Pagina non trovata</value>
+  </data>
+  <data name="Error501" xml:space="preserve">
+    <value>Home page non definita</value>
+  </data>
+  <data name="FormSuccessfullySubmitted" xml:space="preserve">
+    <value>Il modulo è stato inviato con successo</value>
+  </data>
+  <data name="UnexpectedError" xml:space="preserve">
+    <value>Si è verificato un errore inaspettato. Si prega di riprovare più tardi.</value>
+  </data>
+  <data name="PasswordChangePage" xml:space="preserve">
+    <value>Pagina di cambio password</value>
+  </data>
+  <data name="PasswordForgotPage" xml:space="preserve">
+    <value>Pagina di password dimenticata</value>
+  </data>
+  <data name="ProfilePage" xml:space="preserve">
+    <value>Pagina di profilo</value>
+  </data>
+  <data name="RegistrationPage" xml:space="preserve">
+    <value>Pagina di registrazione</value>
+  </data>
+  <data name="SignInPage" xml:space="preserve">
+    <value>Pagina di login</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="ForgotYourPassword" xml:space="preserve">
+    <value>Password dimenticata?</value>
+  </data>
+  <data name="BingVerificationCode" xml:space="preserve">
+    <value>Codice di verifica Bing</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>Formato data</value>
+  </data>
+  <data name="TimeFormat" xml:space="preserve">
+    <value>Formato ora</value>
+  </data>
+  <data name="ConfirmDeleteItem" xml:space="preserve">
+    <value>Stai rimuovendo il seguente elemento:\n{$ItemName}\n\nPremi OK per confermare</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Nessun file selezionato</value>
+  </data>
+  <data name="NotAuthorizedToBrowsePage" xml:space="preserve">
+    <value>Non sei autorizzato ad accedere alla seguente pagina</value>
+  </data>
+  <data name="PressOkToDeleteSelectedFile" xml:space="preserve">
+    <value>Premi OK per rimuovere il file {$SelectedFileName}</value>
+  </data>
+  <data name="PressOkToDeleteSelectedFolder" xml:space="preserve">
+    <value>Premi OK per rimuovere la cartella {$SelectedFolderName}</value>
+  </data>
+  <data name="SegmentNotEmptyPressOkToOverwrite" xml:space="preserve">
+    <value>Il segmento non è vuoto.\n\nPremere OK per sovrascriverlo</value>
+  </data>
+  <data name="SelectedFileCannotBeDeletedUsed" xml:space="preserve">
+    <value>Il file {$SelectedFileName} non può essere rimosso poichè utilizzato in una o più pagine</value>
+  </data>
+  <data name="SelectedFileCannotBeRenamedUsed" xml:space="preserve">
+    <value>Il file {$SelectedFileName} non può essere rinominato poichè utilizzato in una o più pagine</value>
+  </data>
+  <data name="SelectedFolderCannotBeDeletedNotEmpty" xml:space="preserve">
+    <value>La cartella {$SelectedFolderName} non può essere rimossa perchè non è vuota</value>
+  </data>
+  <data name="SelectedFolderCannotBeDeletedRoot" xml:space="preserve">
+    <value>La cartella {$SelectedFolderName} non può essere rimossa perchè è una cartella principale</value>
+  </data>
+  <data name="SelectedFolderCannotBeRenamedNotEmpty" xml:space="preserve">
+    <value>La cartella {$SelectedFolderName} non può essere rinominata perchè non è vuota</value>
+  </data>
+  <data name="SelectedFolderCannotBeRenamedRoot" xml:space="preserve">
+    <value>La cartella {$SelectedFolderName} non può essere rinominata perchè è una cartella principale</value>
+  </data>
+  <data name="SessionExpiredLoginAgain" xml:space="preserve">
+    <value>La tua sessione è scaduta. Si prega di effettuare nuovamente il login</value>
+  </data>
+  <data name="ToConfirmSubmitPressOK" xml:space="preserve">
+    <value>Per confermare l'invio premere OK</value>
+  </data>
+  <data name="TypeTheNewFileName" xml:space="preserve">
+    <value>Inserisci il nome del nuovo file</value>
+  </data>
+  <data name="TypeTheNewFolderName" xml:space="preserve">
+    <value>Inserisci il nome della nuova cartella</value>
+  </data>
+  <data name="MenuName" xml:space="preserve">
+    <value>Nome menu</value>
+  </data>
+  <data name="DataAnnotationsOnlyNumbers" xml:space="preserve">
+    <value>{0} può contenere solo numeri</value>
+  </data>
+  <data name="FilePath" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="InvalidFile" xml:space="preserve">
+    <value>File non valido</value>
+  </data>
+  <data name="ItemUsedSomewhereElse" xml:space="preserve">
+    <value>Il dato selezionato non può essere rimosso poichè utilizzato in altre sezioni</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Si è verificato un errore</value>
+  </data>
+  <data name="NotAllowedToBrowsePage" xml:space="preserve">
+    <value>Non ti è permesso di navigare la seguente pagina</value>
+  </data>
+  <data name="PageAccessNotAuthorized" xml:space="preserve">
+    <value>Accesso alla pagina non autorizzato.</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="MultiFilePath" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="NoParent" xml:space="preserve">
+    <value>(Nessun livello superiore)</value>
+  </data>
+  <data name="AdminPagesAdd" xml:space="preserve">
+    <value>Aggiungi pagina amministrazione</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>Permessi</value>
+  </data>
+  <data name="AdminPages" xml:space="preserve">
+    <value>Pagine amministrazione</value>
+  </data>
+  <data name="AdminPagesDelete" xml:space="preserve">
+    <value>Rimuovi pagina amministrazione</value>
+  </data>
+  <data name="AdminPagesEdit" xml:space="preserve">
+    <value>Modifica pagina amministrazione</value>
+  </data>
+  <data name="Impersonate" xml:space="preserve">
+    <value>Impersona</value>
+  </data>
+  <data name="ShowInMenu" xml:space="preserve">
+    <value>Visibile in menu</value>
+  </data>
+  <data name="PageAlreadyExists" xml:space="preserve">
+    <value>La pagina selezionata esiste già</value>
+  </data>
+  <data name="TooltipAbsoluteOrRelativeURL" xml:space="preserve">
+    <value>URL assoluto o relativo. Es. http://www.externalurl.com oppure /Admin/News</value>
+  </data>
+  <data name="TooltipAdminPageName" xml:space="preserve">
+    <value>Nome pagina utilizza i file Resource per generare il testo in diverse lingue, quindi è necessario aggiungere in testa ed in coda i caratteri {# e }. Es. {#TestPageName}</value>
+  </data>
+  <data name="AddNewItem" xml:space="preserve">
+    <value>Aggiungi nuovo</value>
+  </data>
+  <data name="DeleteItem" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="EditItem" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="GroupName" xml:space="preserve">
+    <value>Nome gruppo</value>
+  </data>
+  <data name="GroupNameAlreadyExists" xml:space="preserve">
+    <value>Il nome del gruppo selezionato esiste già</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Gruppi</value>
+  </data>
+  <data name="GroupsAdd" xml:space="preserve">
+    <value>Aggiungi gruppo</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Anteprima</value>
+  </data>
+  <data name="GroupsEdit" xml:space="preserve">
+    <value>Modifica gruppo</value>
+  </data>
+  <data name="ResetForm" xml:space="preserve">
+    <value>Resetta modulo</value>
+  </data>
+  <data name="YouHaveUnsavedChanges" xml:space="preserve">
+    <value>Hai delle modifiche non salvate!</value>
+  </data>
+  <data name="PageSuccessfullyMoved" xml:space="preserve">
+    <value>La pagina è stata spostata correttamente</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>Gestione</value>
+  </data>
+  <data name="HelpSelectMultipleFiles" xml:space="preserve">
+    <value>&lt;h3&gt;Selezionare più file&lt;/h3&gt;&lt;p&gt;Tenere premuto il tasto Ctrl/Command e cliccare sui file desiderati. Infine cliccare il tasto destro del mouse e scegliere 'Seleziona'&lt;/p&gt;</value>
+  </data>
+  <data name="UrlMustStartWith" xml:space="preserve">
+    <value>Questo URL deve iniziare con http:// o https:// e non deve contenere nessuno spazio</value>
+  </data>
+  <data name="DataAnnotationsRange" xml:space="preserve">
+    <value>{0} può contenere solo numeri compresi tra {1} e {2}</value>
+  </data>
+  <data name="DataAnnotationsOnlyDecimal" xml:space="preserve">
+    <value>{0} può contenere solo numeri decimali</value>
+  </data>
+  <data name="InsertModuleAtCursor" xml:space="preserve">
+    <value>Aggiungi modulo nella posizione corrente del cursore</value>
+  </data>
+  <data name="ToCopyHelp" xml:space="preserve">
+    <value>Per copiare il contenuto che segue basta cliccare nel campo si testo e premere Ctrl+C (oppure tasto destro del mouse e selezionare Copia)</value>
+  </data>
+  <data name="AtLeastOneField" xml:space="preserve">
+    <value>Almeno uno dei seguenti campi deve essere inserito:</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>Data (da)</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>Data (a)</value>
+  </data>
+  <data name="ModulesInsertedMoreThanOnce" xml:space="preserve">
+    <value>I seguenti moduli sono stati inseriti più di una volta:</value>
+  </data>
+  <data name="PublishDate" xml:space="preserve">
+    <value>Data pubblicazione</value>
+  </data>
+  <data name="InsufficientPermissions" xml:space="preserve">
+    <value>Permessi insufficienti</value>
+  </data>
+  <data name="DataAnnotationsRequiredAllLanguages" xml:space="preserve">
+    <value>{0} è obbligatorio in tutte le lingue</value>
+  </data>
+  <data name="Ordering" xml:space="preserve">
+    <value>Ordinamento</value>
+  </data>
+  <data name="IsMainItem" xml:space="preserve">
+    <value>Elemento principale</value>
+  </data>
+  <data name="Any" xml:space="preserve">
+    <value>Indifferente</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="AllActive" xml:space="preserve">
+    <value>Tutti attivi</value>
+  </data>
+  <data name="GoBackToHomePage" xml:space="preserve">
+    <value>Torna alla Home Page</value>
+  </data>
+  <data name="ToggleNavigation" xml:space="preserve">
+    <value>Navigatore</value>
+  </data>
+  <data name="YouAreHere" xml:space="preserve">
+    <value>Sei in:&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="GoogleMultilingualSitemap" xml:space="preserve">
+    <value>Google sitemap multi lingua</value>
+  </data>
+  <data name="OfflineUrl" xml:space="preserve">
+    <value>URL off-line</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Stati</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Dispositivo</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplica</value>
+  </data>
+  <data name="FileTypeName" xml:space="preserve">
+    <value>Tipo file</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Altezza</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Inattivo/a</value>
+  </data>
+  <data name="InsertDate" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="SizeName" xml:space="preserve">
+    <value>Dimensione</value>
+  </data>
+  <data name="Sizes" xml:space="preserve">
+    <value>Dimensioni</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Larghezza</value>
+  </data>
+  <data name="CouldNotRetrieveTheRequestedResource" xml:space="preserve">
+    <value>Non è stato possibile recuperare la risorsa richiesta</value>
+  </data>
+  <data name="BrowserDescription" xml:space="preserve">
+    <value>Descrizione browser</value>
+  </data>
+  <data name="BrowserMaker" xml:space="preserve">
+    <value>Produttore browser</value>
+  </data>
+  <data name="BrowserType" xml:space="preserve">
+    <value>Tipo browser</value>
+  </data>
+  <data name="BrowserVersion" xml:space="preserve">
+    <value>Versione browser</value>
+  </data>
+  <data name="CityName" xml:space="preserve">
+    <value>Nome città</value>
+  </data>
+  <data name="CountryCode" xml:space="preserve">
+    <value>Codice nazione</value>
+  </data>
+  <data name="CountryName" xml:space="preserve">
+    <value>Nome nazione</value>
+  </data>
+  <data name="DeviceMaker" xml:space="preserve">
+    <value>Produttore dispositivo</value>
+  </data>
+  <data name="DeviceName" xml:space="preserve">
+    <value>Nome dispositivo</value>
+  </data>
+  <data name="DevicePointingMethod" xml:space="preserve">
+    <value>Sistema puntamento dispositivo</value>
+  </data>
+  <data name="DeviceType" xml:space="preserve">
+    <value>Tipo dispositivo</value>
+  </data>
+  <data name="IpAddress" xml:space="preserve">
+    <value>Indirizzo IP</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitudine</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitudine</value>
+  </data>
+  <data name="MaxNumberOfRows" xml:space="preserve">
+    <value>Numero massimo di dati</value>
+  </data>
+  <data name="Platform" xml:space="preserve">
+    <value>Nome piattaforma</value>
+  </data>
+  <data name="PlatformMaker" xml:space="preserve">
+    <value>Produttore piattaforma</value>
+  </data>
+  <data name="PlatformVersion" xml:space="preserve">
+    <value>Versione piattaforma</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>CAP</value>
+  </data>
+  <data name="SubdivisionCode" xml:space="preserve">
+    <value>Codice regione</value>
+  </data>
+  <data name="SubdivisionName" xml:space="preserve">
+    <value>Nome regione</value>
+  </data>
+  <data name="UrlReferrer" xml:space="preserve">
+    <value>URL referrer</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Esporta in Excel</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Giorno</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Ora</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mese</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Ricerca avanzata</value>
+  </data>
+  <data name="DataAnnotationsOnlyIntegers" xml:space="preserve">
+    <value>{0} può contenere solo numeri interi</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="TargetUrls" xml:space="preserve">
+    <value>URL target</value>
+  </data>
+  <data name="TooltipUrls" xml:space="preserve">
+    <value>Aggiungi un URL per riga</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Altro</value>
+  </data>
+  <data name="NoteToClearCacheToTakeEffect" xml:space="preserve">
+    <value>Affinchè alcuni settaggi siano effettivi sarà necessario &lt;a href="/Admin/ClearCache" class="confirm-action"&gt;pulire la cache&lt;/a&gt;</value>
+  </data>
+  <data name="Canonicalize" xml:space="preserve">
+    <value>Canonicalizza</value>
+  </data>
+  <data name="TooltipCanonicalize" xml:space="preserve">
+    <value>Se selezionato l'URL digitato nel browser verrà automaticamente reindirizzato al nome di dominio specificato nel campo sottostante.&lt;br/&gt;Es. Se il nome di dominio è www.mvcwcms.com e l'utente digita mvcwcms.com allora verrà reindirizzato su www.mvcwcms.com&lt;br/&gt;ma se il nome di dominio è mvcwcms.com e l'utente digita www.mvcwcms.com allora verrà reindirizzato su mvcwcms.com.&lt;br/&gt;Se non selezionato non verrà effettuato nessun reindirizzamento.</value>
+  </data>
+  <data name="Installation" xml:space="preserve">
+    <value>Installazione</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continua</value>
+  </data>
+  <data name="DatabaseName" xml:space="preserve">
+    <value>Nome database</value>
+  </data>
+  <data name="InstallationFollowUp" xml:space="preserve">
+    <value>Clicca il pulsante "continua" e nella pagina successiva utilizza le seguenti credenziali per accedere al pannello di amministrazione:</value>
+  </data>
+  <data name="InstallationInstructions" xml:space="preserve">
+    <value>Per completare l'installazione devi conoscere alcune informazioni riguardanti il tuo server database (stringa di connessione).</value>
+  </data>
+  <data name="InstallationSuccess" xml:space="preserve">
+    <value>MVCwCMS è stato installato correttamente.</value>
+  </data>
+  <data name="SqlPassword" xml:space="preserve">
+    <value>Password SQL</value>
+  </data>
+  <data name="SqlServerName" xml:space="preserve">
+    <value>Nome SQL Server</value>
+  </data>
+  <data name="SqlUsername" xml:space="preserve">
+    <value>Nome utente SQL</value>
+  </data>
+  <data name="CurrentWindowsUser" xml:space="preserve">
+    <value>Utente Windows corrente</value>
+  </data>
+  <data name="IntegratedWindowsAuthentication" xml:space="preserve">
+    <value>Autenticazione Windows integrata</value>
+  </data>
+  <data name="SqlAuthenticationType" xml:space="preserve">
+    <value>Tipo di autenticazione SQL</value>
+  </data>
+  <data name="SqlServerAccount" xml:space="preserve">
+    <value>Account SQL Server</value>
+  </data>
+  <data name="TooltipUseOnlyLetters" xml:space="preserve">
+    <value>Utilizzare solo lettere. Gli spazi non sono ammessi.</value>
+  </data>
+  <data name="CreateDbIfDoesNotExist" xml:space="preserve">
+    <value>Crea database se non esiste</value>
+  </data>
+  <data name="ResetDbIfDoesExist" xml:space="preserve">
+    <value>Resetta database se esiste</value>
+  </data>
+  <data name="TooltipCreateDbIfDoesNotExist" xml:space="preserve">
+    <value>Per completare questa operazione l'account usato per l'autenticazione deve avere i permessi necessari.</value>
+  </data>
+  <data name="TooltipResetDbIfDoesExist" xml:space="preserve">
+    <value>Se questa ozione è selezionata tutte le table, views, functions e stored procedures saranno resettate al loro valore originale.</value>
+  </data>
+  <data name="AdminLanguageCode" xml:space="preserve">
+    <value>Lingua amministrazione</value>
+  </data>
+  <data name="IgnoreDbExistsWarning" xml:space="preserve">
+    <value>Ignora avvertimento se il database esiste</value>
+  </data>
+  <data name="TooltipIgnoreDbExistsWarning" xml:space="preserve">
+    <value>Se questa ozione è selezionata il sistema ignorerà l'avvertimento che il database esiste già e procederà con l'installazione.</value>
+  </data>
+  <data name="UninstallCms" xml:space="preserve">
+    <value>Disinstalla CMS</value>
+  </data>
+  <data name="TooltipSqlServerName" xml:space="preserve">
+    <value>Nome istanza SQL Server: Es. localhost\sqlexpress</value>
+  </data>
+  <data name="ToConfirmPressOK" xml:space="preserve">
+    <value>Premi OK per confermare</value>
+  </data>
+  <data name="WarningDatabaseAlreadyExists" xml:space="preserve">
+    <value>Attenzione: il database esiste già. Per ignore questo avvertimento basta selezionare l'opzione "Ignora avvertimento se il database esiste" e riprovare.</value>
+  </data>
+  <data name="WarningDatabaseDoesNotExist" xml:space="preserve">
+    <value>Attenzione: Il database non esiste. Per ignorare questo avvertimento basta selezionare l'opzione "Crea database se non esiste" e riprovare.</value>
+  </data>
+  <data name="ReloadThisPage" xml:space="preserve">
+    <value>Aggiorna questa pagina</value>
+  </data>
+  <data name="Displaying" xml:space="preserve">
+    <value>Elementi visualizzati</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>di</value>
+  </data>
+  <data name="DataAnnotationsOnlySafeCharacters" xml:space="preserve">
+    <value>{0} può contenere solo lettere, numeri, spazi e i seguenti caratteri: !?$@#%()_+-=:;",.'&amp;/</value>
+  </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>Torna indietro</value>
+  </data>
+  <data name="MustHaveValidSqlLogin" xml:space="preserve">
+    <value>Devi avere un valido login utente SQL con permessi sufficienti per creare un nuovo database e tutte le Tabelle, Stored Procedures e Funzioni necessarie al corretto funzionamento. Es. Un login utente con il Server Role di sysadmin.</value>
+  </data>
+</root>

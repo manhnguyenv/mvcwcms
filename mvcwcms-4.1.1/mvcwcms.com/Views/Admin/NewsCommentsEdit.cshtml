@@ -1,0 +1,48 @@
+﻿@model BackEndNewsCommentsEdit
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @MVCwCMS.Resources.Strings_News.CurrentNews
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-12">
+                        @Html.HiddenFor(m => m.NewsId)
+
+                        @Html.BootstrapTextBoxFor(m => m.NewsTitle, isReadOnly: true)
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <text>
+                            @Html.BootstrapSubmit(isConfirmActive: true)
+                            @Html.BootstrapResetForm()
+                        </text>
+                    }
+                    @Html.BootstrapButtonRedirect("/Admin/NewsComments/" + Model.NewsId + "/", MVCwCMS.Resources.Strings_News.NewsComments)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <div class="col-lg-6">
+
+                            @Html.BootstrapCheckBoxFor(m => m.IsActive)
+
+                            @Html.BootstrapTextAreaFor(m => m.Comment)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

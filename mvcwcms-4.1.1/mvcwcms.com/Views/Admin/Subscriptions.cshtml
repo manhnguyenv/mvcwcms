@@ -1,0 +1,84 @@
+﻿@model BackEndSubscriptionsList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-md-6">
+                        @Html.BootstrapTextBoxFor(m => m.Email)
+                    </div>
+                    <div class="col-md-6">
+                        @{
+                            SubscriptionStatuses subscriptionStatuses = new SubscriptionStatuses();
+                            var selectListBackEndSubscriptionStatuses = new SelectList(subscriptionStatuses.GetAllSubscriptionStatuses(), "SubscriptionStatusId", "SubscriptionStatusName");
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.SubscriptionStatusId, selectListBackEndSubscriptionStatuses, MVCwCMS.Resources.Strings.Any)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.BootstrapTextBoxFor(m => m.FirstName)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.BootstrapTextBoxFor(m => m.LastName)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.BootstrapDropDownListFor(m => m.WantsNewsletter, FormHelper.GetSelectListForYesNo(), MVCwCMS.Resources.Strings.Any)
+                    </div>
+                    <div class="col-md-3">
+                        @Html.BootstrapDatePickerFor(m => m.JoinDateFrom)
+                    </div>
+                    <div class="col-md-3">
+                        @Html.BootstrapDatePickerFor(m => m.JoinDateTo)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @Html.BootstrapApplyFilter()
+                    @Html.BootstrapResetFilter()
+                    @Html.BootstrapButtonAdd("/Admin/SubscriptionsAdd")
+
+                    @*
+                        To make sure the export works:
+                        1) We need to implement the map class in the desired Model.
+                           In the following case we implement SubscriptionsMap class.
+                        2) We need to store the List<...> into a session object.
+                           The Session key name must start with "Data_" and the rest of the key must match the last segment of the ExportToExcel URL.
+                           In the following case case: Data_Subscriptions matches /Admin/ExportToExcel/Subscriptions
+                    *@
+                    @{ Session["Data_Subscriptions"] = Model.SubscriptionsList; }
+                    @Html.BootstrapActions(new List<BootstrapMenuItem>(){
+	                    new BootstrapMenuItem(MVCwCMS.Resources.Strings.ExportToExcel, "/Admin/ExportToExcel/Subscriptions", icon: "fa-file-excel-o" )
+	                })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.SubscriptionsList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+        
+                    WebGridHelper webGrid = new WebGridHelper(Model.SubscriptionsList, defaultSort: "JoinDate", sortDirection: SortDirection.Descending, rowsPerPage: 10);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonEdit("/Admin/SubscriptionsEdit/" + Server.UrlEncode(item.Email) as string + "/")</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonDelete("/Admin/SubscriptionsDelete", item.Email as object, item.Email as string)</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("Email", MVCwCMS.Resources.Strings.Email),
+                            webGrid.ExtendedColumn("LastName", MVCwCMS.Resources.Strings.LastName),
+                            webGrid.ExtendedColumn("FirstName", MVCwCMS.Resources.Strings.FirstName),
+                            webGrid.ExtendedColumn("JoinDate", MVCwCMS.Resources.Strings.JoinDate, format: @<text>@ExtensionsHelper.ToDateTimeString(item.JoinDate)</text>),
+                            webGrid.ExtendedColumn("SubscriptionStatusName", MVCwCMS.Resources.Strings.Status),
+                            webGrid.ExtendedColumn("WantsNewsletter", MVCwCMS.Resources.Strings.Newsletter, format: @<text>@Html.BootstrapIsTicked(item.WantsNewsletter as bool?)</text>, style: "col-80 text-center")
+                        )
+                    );
+                }
+            }
+        </div>
+    </div>
+</div>

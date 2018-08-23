@@ -1,0 +1,76 @@
+﻿@model BackEndSubscriptionsAdd
+<div class="row">
+    <div class="col-lg-12">
+        @* Sets isDirtyFormMonitored to false due to the below Chrome's bug *@
+        @using (Html.BootstrapBeginForm(isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.BootstrapSubmit()
+                    @Html.BootstrapResetForm()
+                    @Html.BootstrapButtonRedirect("/Admin/Subscriptions", MVCwCMS.Resources.Strings_Subscription.Subscriptions)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#account-details" data-toggle="tab">@Html.Raw(MVCwCMS.Resources.Strings_Subscription.AccountDetails)</a>
+                        </li>
+                        <li>
+                            <a href="#personal-details" data-toggle="tab">@Html.Raw(MVCwCMS.Resources.Strings_Subscription.PersonalDetails)</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content col-lg-6">
+                        <br />
+                        <div class="tab-pane fade in active" id="account-details">
+                            @* Due to a Chrome's bug it ignores autocomplete="off" *@
+                            <input type="text" class="hidden" name="FakeUsernameRemembered" />
+                            <input type="password" class="hidden" name="FakePasswordRemembered" />
+
+                            @Html.BootstrapTextBoxFor(m => m.Email, autoFocus: true)
+
+                            @Html.BootstrapPasswordFor(m => m.Password)
+
+                            @Html.BootstrapPasswordFor(m => m.ConfirmationPassword)
+
+                            @{
+                                SubscriptionStatuses subscriptionStatuses = new SubscriptionStatuses();
+                                var selectListBackEndSubscriptionStatuses = new SelectList(subscriptionStatuses.GetAllSubscriptionStatuses(), "SubscriptionStatusId", "SubscriptionStatusName");
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.SubscriptionStatusId, selectListBackEndSubscriptionStatuses)
+
+                            @Html.BootstrapCheckBoxFor(m => m.WantsNewsletter)
+
+                            @Html.BootstrapTextAreaFor(m => m.Notes)
+                        </div>
+                        <div class="tab-pane fade" id="personal-details">
+                            @Html.BootstrapTextBoxFor(m => m.LastName)
+
+                            @Html.BootstrapTextBoxFor(m => m.FirstName)
+
+                            @Html.BootstrapTextBoxFor(m => m.Birthdate, className: "date-mask")
+
+                            @{
+                                Countries countries = new Countries();
+                                var selectListBackEndCountries = new SelectList(countries.GetAllCountries(), "CountryCode", "CountryName");
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.CountryCode, selectListBackEndCountries)
+
+                            @Html.BootstrapTextBoxFor(m => m.City)
+
+                            @Html.BootstrapTextBoxFor(m => m.PostCode)
+
+                            @Html.BootstrapTextBoxFor(m => m.Address)
+
+                            @Html.BootstrapTextBoxFor(m => m.PhoneNumber)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

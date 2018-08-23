@@ -1,0 +1,30 @@
+﻿@model BackEndLanguagesAdd
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.BootstrapSubmit()
+                    @Html.BootstrapResetForm()
+                    @Html.BootstrapButtonRedirect("/Admin/Languages", MVCwCMS.Resources.Strings.Languages)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-lg-6">
+                        @Html.BootstrapTextBoxFor(m => m.LanguageCode, autoFocus: true)
+
+                        @Html.BootstrapTextBoxFor(m => m.LanguageName)
+
+                        @Html.BootstrapTextBoxFor(m => m.LanguageNameOriginal)
+
+                        @Html.BootstrapCheckBoxFor(m => m.IsActive)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

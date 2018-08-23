@@ -1,0 +1,47 @@
+﻿@model FrontEndCmsPage
+<!DOCTYPE html>
+@{ GlobalConfiguration globalConfiguration = new GlobalConfigurations().GetGlobalConfiguration(); }
+<html lang="@Model.LanguageCode">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>@Model.MetaTagTitle</title>
+        <meta name="keywords" content="@Model.MetaTagKeywords" />
+        <meta name="description" content="@Model.MetaTagDescription" />
+        <meta name="robots" content="@Model.Robots" />
+        <meta name="msvalidate.01" content="@globalConfiguration.BingVerificationCode" />
+        <meta name="google-site-verification" content="@globalConfiguration.GoogleVerificationCode" />
+        <link rel="canonical" href="@Html.Canonical()" />
+        <link rel="apple-touch-icon-precomposed" href="~/content/frontend/images/favicon.png" />
+        <link rel="shortcut icon" href="~/content/frontend/images/favicon.ico" />
+        <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+        <meta property="og:title" content="@Model.MetaTagTitle" />
+        <meta property="og:description" content="@Model.MetaTagDescription" />
+
+        <meta name="author" content="Powered by MVCwCMS" />
+        @*Would you like to remove the "Powered by MVCwCMS" author meta tag from the header?
+        Find more info here http://www.mvcwcms.com/copyrightremoval*@
+
+        @Styles.Render("~/bundles/frontend-css")
+        @{
+            if (Request.UserAgent.IfEmpty("").Contains("MSIE 8.0", StringComparison.InvariantCultureIgnoreCase))
+            {
+                <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            }
+        }
+        @Html.Raw(globalConfiguration.GoogleAnalyticsTrackingCode)
+    </head>
+    <body>
+        @Html.GetPageContent(Model)
+        <script type="text/javascript">
+            var LanguageCode = "@Model.LanguageCode";
+            var DateFormat = "@globalConfiguration.DateFormat";
+            var TimeFormat = "@globalConfiguration.TimeFormat";
+            var ToConfirmSubmitPressOK = "@Html.Raw(MVCwCMS.Resources.Strings.ToConfirmSubmitPressOK)";
+        </script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        @Scripts.Render("~/bundles/frontend-js")
+    </body>
+</html>

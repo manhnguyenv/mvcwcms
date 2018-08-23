@@ -1,0 +1,9 @@
+﻿@model FrontEndError
+@{
+    Response.TrySkipIisCustomErrors = true;
+    Response.StatusCode = Model.StatusCode;
+}
+<div class="alert alert-danger">
+    @Model.ErroMessage
+</div>
+<p><a href="~/@Model.LanguageFolder" class="btn btn-default">@MVCwCMS.Resources.Strings.GoBackToHomePage</a></p>

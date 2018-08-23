@@ -1,0 +1,83 @@
+﻿@model FrontEndSubscriptionRegister
+@using (Html.BootstrapBeginForm(actionName: "Index", controllerName: "Default", isDirtyFormMonitored: false))
+{
+    <div class="panel panel-default">
+        @if (ViewBag.IsActivationPage)
+        {
+            <div class="panel-body">
+                @Html.Raw(ViewBag.ActivationResult)
+            </div>
+        }
+        else
+        {
+            if (ViewData.IsFormVisible())
+            {
+                <div class="panel-body">
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-sm-6">
+                        @Html.BootstrapTextBoxFor(m => m.FirstName)
+
+                        @Html.BootstrapTextBoxFor(m => m.LastName)
+
+                        @Html.BootstrapTextBoxFor(m => m.Email)
+
+                        @Html.BootstrapPasswordFor(m => m.Password)
+
+                        @Html.BootstrapPasswordFor(m => m.ConfirmationPassword)
+                    
+                        <hr />
+                        @Html.BootstrapCheckBoxFor(m => m.WantsNewsletter)
+                        <hr />
+
+                        <div class="hidden">
+                            @Html.BootstrapTextBoxFor(m => m.Notes)
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.BootstrapTextBoxFor(m => m.Birthdate, className: "date-mask")
+
+                        @{
+                            Countries countries = new Countries();
+                            var selectListBackEndCountries = new SelectList(countries.GetAllCountries(), "CountryCode", "CountryName");
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.CountryCode, selectListBackEndCountries)
+
+                        @Html.BootstrapTextBoxFor(m => m.City)
+
+                        @Html.BootstrapTextBoxFor(m => m.PostCode)
+
+                        @Html.BootstrapTextBoxFor(m => m.Address)
+
+                        @Html.BootstrapTextBoxFor(m => m.PhoneNumber)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            @Html.BootstrapSubmit(className: "btn-success")
+                        </div>
+                        <div class="col-sm-10 text-right">
+                            @{
+                                SubscriptionConfiguration subscriptionConfiguration = new SubscriptionConfigurations().GetSubscriptionConfiguration();
+                                CmsPages cmsPages = new CmsPages();
+                                if (subscriptionConfiguration.SignInPageId.IsNotNull())
+                                {
+                                    CmsPageActionlink cmsPageActionlink = cmsPages.GetCmsPageActionlink(subscriptionConfiguration.SignInPageId, Model.LangugeCode);
+                                    <i class="fa fa-sign-in"></i> <a href="@cmsPageActionlink.Url">@cmsPageActionlink.Title</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary(IsSuccessItemMarkerVisible: false)
+                </div>
+            }
+        }
+    </div>
+}

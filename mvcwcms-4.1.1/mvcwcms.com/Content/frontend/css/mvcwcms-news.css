@@ -1,0 +1,3 @@
+﻿.news-list { list-style-type:none; }
+.news-list li { margin-bottom:20px; }
+.news-list li article figure { margin-bottom: 10px; }

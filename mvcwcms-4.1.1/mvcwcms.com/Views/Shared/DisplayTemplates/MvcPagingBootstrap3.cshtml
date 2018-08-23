@@ -1,0 +1,62 @@
+﻿@model PaginationModel
+<nav>
+    <ul class="pagination pagination-sm">
+        @foreach (PaginationLink paginationlink in Model.PaginationLinks)
+        {
+            @BuildLink(paginationlink)
+        }
+    </ul>
+</nav>
+
+@helper BuildLink(PaginationLink paginationlink)
+{
+    TagBuilder liBuilder = new TagBuilder("li");
+    if (paginationlink.IsCurrent)
+    {
+        liBuilder.MergeAttribute("class", "active");
+    }
+    if (!paginationlink.Active)
+    {
+        liBuilder.MergeAttribute("class", "disabled");
+    }
+
+    TagBuilder aBuilder = new TagBuilder("a");
+    if (paginationlink.Url.IsNotEmptyOrWhiteSpace() && paginationlink.Active)
+    {
+        aBuilder.MergeAttribute("href", paginationlink.Url.Replace("/" + ViewContext.RouteData.Values["controller"].ToString(), ""));
+    }
+
+    //// Ajax support
+    //if (Model.AjaxOptions != null)
+    //{
+    //    foreach (var ajaxOption in Model.AjaxOptions.ToUnobtrusiveHtmlAttributes())
+    //    {
+    //        aBuilder.MergeAttribute(ajaxOption.Key, ajaxOption.Value.ToString(), true);
+    //    }
+    //}
+
+    if (paginationlink.DisplayText == "«")
+    {
+        aBuilder.InnerHtml = "&laquo;";
+    }
+    else if (paginationlink.DisplayText == "»")
+    {
+        aBuilder.InnerHtml = "&raquo;";
+    }
+    else if (paginationlink.DisplayText == "‹")
+    {
+        aBuilder.InnerHtml = "&lsaquo;";
+    }
+    else if (paginationlink.DisplayText == "›")
+    {
+        aBuilder.InnerHtml = "&rsaquo;";
+    }
+    else
+    {
+        aBuilder.SetInnerText(paginationlink.DisplayText);
+    }
+    
+    liBuilder.InnerHtml = aBuilder.ToString();
+
+    @Html.Raw(liBuilder.ToString())
+}

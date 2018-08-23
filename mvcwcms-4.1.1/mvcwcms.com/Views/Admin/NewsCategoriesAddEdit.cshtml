@@ -1,0 +1,54 @@
+﻿@model BackEndNewsCategoryAddEdit
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <text>
+                            @Html.BootstrapSubmit(isConfirmActive: true)
+                            @Html.BootstrapResetForm()
+                        </text>
+                    }
+                    @Html.BootstrapButtonRedirect("/Admin/NewsCategories", MVCwCMS.Resources.Strings_News.NewsCategories)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                @Html.HiddenFor(m => m.CategoryId)
+                                
+                                @Html.BootstrapCheckBoxFor(m => m.IsActive)
+                            </div>
+                        </div>
+
+                        <ul class="nav nav-tabs">
+                            @for (int i = 0; i < Model.NewsCategoryLanguages.Count; i++)
+                            {
+                                <li class="@(i == 0 ? "active" : "")"><a href="#Tab-@Model.NewsCategoryLanguages[i].LanguageCode" data-toggle="tab">@Model.NewsCategoryLanguages[i].LanguageName</a></li>
+                            }
+                        </ul>
+                        <div class="tab-content">
+                            <br />
+                            @for (int i = 0; i < Model.NewsCategoryLanguages.Count; i++)
+                            {
+                                @Html.HiddenFor(m => m.NewsCategoryLanguages[i].LanguageCode)
+                                @Html.HiddenFor(m => m.NewsCategoryLanguages[i].LanguageName)
+                                <div class="tab-pane fade @(i == 0 ? "in active" : "")" id="Tab-@Model.NewsCategoryLanguages[i].LanguageCode">
+                                    @Html.BootstrapTextBoxFor(m => m.NewsCategoryLanguages[i].CategoryName)
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model BackEndPageTemplatesList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-sm-6">
+                        @Html.BootstrapTextBoxFor(m => m.Title)
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.BootstrapDropDownListFor(m => m.IsActive, FormHelper.GetSelectListForYesNo(), MVCwCMS.Resources.Strings.Any)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @Html.BootstrapApplyFilter()
+                    @Html.BootstrapResetFilter()
+                    @Html.BootstrapButtonAdd("/Admin/PageTemplatesAdd")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.PageTemplateList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+        
+                    WebGridHelper webGrid = new WebGridHelper(Model.PageTemplateList, defaultSort: "Title", sortDirection: SortDirection.Ascending, rowsPerPage: 10);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonEdit("/Admin/PageTemplatesEdit/" + item.PageTemplateId as string)</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonDelete("/Admin/PageTemplatesDelete", item.PageTemplateId as object, item.Title as string)</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("Title", MVCwCMS.Resources.Strings.TemplateName),
+                            webGrid.ExtendedColumn("IsActive", MVCwCMS.Resources.Strings.Active, format: @<text>@Html.BootstrapIsTicked(item.IsActive as bool?)</text>, style: "col-80 text-center")
+                        )
+                    );
+                }
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿Added the following code to the ckfinder.html at line 138
+
+ckfinder.callback = function (api) {
+	api.disableFileContextMenuOption("deleteFile", false);
+	api.disableFileContextMenuOption("deleteFiles", false);
+	api.disableFileContextMenuOption("renameFile", false);
+	api.disableFolderContextMenuOption("removeFolder", false);
+	api.disableFolderContextMenuOption("renameFolder", false);
+};
+-----------------------------------------------------------------------------------------------
+
+Added the following code to ~/ckfinder/skins/kama/uipanel.css
+
+.cke_button_moveFilesToFolderDrop { display:none !important; }
+
+-----------------------------------------------------------------------------------------------
+
+Added the following code to ~/ckfinder/config.js
+
+config.removePlugins = 'basket'; //'dragdrop,basket';
+
+-----------------------------------------------------------------------------------------------
+
+Edited config.ascx to manage permissions and resources 

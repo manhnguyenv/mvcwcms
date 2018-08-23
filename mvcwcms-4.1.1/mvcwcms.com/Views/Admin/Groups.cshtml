@@ -1,0 +1,54 @@
+﻿@model BackEndGroupsList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-sm-6">
+                        @Html.BootstrapTextBoxFor(m => m.GroupName)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @Html.BootstrapApplyFilter()
+                    @Html.BootstrapResetFilter()
+                    @Html.BootstrapButtonAdd("/Admin/GroupsAdd")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.GroupList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+        
+                    WebGridHelper webGrid = new WebGridHelper(Model.GroupList, defaultSort: "GroupName", sortDirection: SortDirection.Ascending, rowsPerPage: 10);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                                    webGrid.ExtendedColumn("", "",
+                                    @<text>
+                                        @if (item.GroupId != 1) {
+                                            @Html.BootstrapButtonEdit("/Admin/GroupsEdit/" + item.GroupId as string)
+                                        }
+                                    </text>, style: "col-10"),
+                                    webGrid.ExtendedColumn("", "", 
+                                    @<text>
+                                        @if (item.GroupId != 1) { 
+                                            @Html.BootstrapButtonDelete("/Admin/GroupsDelete", item.GroupId as object, item.GroupName as string)
+                                        }
+                                    </text>, style: "col-10"),
+                                    webGrid.ExtendedColumn("GroupName", MVCwCMS.Resources.Strings.GroupName)
+                        )
+                    )
+                }
+            }
+        </div>
+    </div>
+</div>

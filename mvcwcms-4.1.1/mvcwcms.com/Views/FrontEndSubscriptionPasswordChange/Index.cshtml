@@ -1,0 +1,30 @@
+﻿@model FrontEndSubscriptionPasswordChange
+@using (Html.BootstrapBeginForm(actionName: "Index", controllerName: "Default", isDirtyFormMonitored: false))
+{
+    <div class="panel panel-default">
+        @if (ViewData.IsFormVisible())
+        {
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @Html.BootstrapValidationSummary()
+
+                <div class="col-sm-6">
+                    @Html.BootstrapPasswordFor(m => m.CurrentPassword)
+
+                    @Html.BootstrapPasswordFor(m => m.NewPassword)
+
+                    @Html.BootstrapPasswordFor(m => m.ConfirmationPassword)
+                </div>
+            </div>
+            <div class="panel-footer">
+                @Html.BootstrapSubmit(className: "btn-success")
+            </div>
+        }
+        else
+        {
+            <div class="panel-body">
+                @Html.BootstrapValidationSummary(IsSuccessItemMarkerVisible: false)
+            </div>
+        }
+    </div>
+}

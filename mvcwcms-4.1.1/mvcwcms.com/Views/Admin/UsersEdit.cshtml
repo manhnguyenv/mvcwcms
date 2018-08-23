@@ -1,0 +1,55 @@
+﻿@model BackEndUsersEdit
+<div class="row">
+    <div class="col-lg-12">
+        @* Sets isDirtyFormMonitored to false due to the below Chrome's bug *@
+        @using (Html.BootstrapBeginForm(isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <text>
+                            @Html.BootstrapSubmit(isConfirmActive: true)
+                            @Html.BootstrapResetForm()
+                        </text>
+                    }
+                    @Html.BootstrapButtonRedirect("/Admin/Users", MVCwCMS.Resources.Strings.Users)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <div class="col-lg-6">
+                            @* Due to a Chrome's bug it ignores autocomplete="off" *@
+                            <input type="text" class="hidden" name="FakeUsernameRemembered" />
+                            <input type="password" class="hidden" name="FakePasswordRemembered" />
+
+                            @Html.BootstrapTextBoxFor(m => m.Username, isReadOnly: true)
+
+                            @Html.BootstrapPasswordFor(m => m.Password, labelTooltip: MVCwCMS.Resources.Strings.LeaveEmptyToNotChangePassword)
+
+                            @Html.BootstrapPasswordFor(m => m.ConfirmationPassword, labelTooltip: MVCwCMS.Resources.Strings.LeaveEmptyToNotChangePassword)
+
+                            @Html.BootstrapTextBoxFor(m => m.FullName)
+
+                            @{
+                                Subscriptions subscriptions = new Subscriptions();
+                                var selectListSubscriptions = new SelectList(subscriptions.GetAllSubscriptions(), "Email", "Email");
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.Email, selectListSubscriptions)
+
+                            @{
+                                Groups groups = new Groups();
+                                var selectListBackEndGroups = new SelectList(groups.GetAllGroups(), "GroupId", "GroupName");
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.GroupId, selectListBackEndGroups)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

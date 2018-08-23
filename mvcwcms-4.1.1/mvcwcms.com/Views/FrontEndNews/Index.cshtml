@@ -1,0 +1,206 @@
+﻿@model FrontEndNews
+@{
+    NewsConfiguration newsConfiguration = new NewsConfigurations().GetNewsConfiguration();
+    if (newsConfiguration.IsNewsActive && newsConfiguration.NewsPageId.IsNotNull())
+    {
+        <div class="news-container">
+            @if (Model.IsNotNull())
+            {
+                CmsPages cmsPages = new CmsPages();
+                CmsPageActionlink cmsPageActionlinkNews = cmsPages.GetCmsPageActionlink(newsConfiguration.NewsPageId, Model.LanguageCode);
+                
+                <div class="row">
+                    <div class="col-sm-9">
+                        @if (Model.NewsId.IsNull())
+                        {
+                            <div class="bottom-20">
+                                <h1>@MVCwCMS.Resources.Strings_News.News</h1>
+                                <div class="row">
+                                    <div class="col-sm-12 text-right">
+                                        <i class="fa fa-rss"></i> <a href="rss/">RSS Feed</a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-rss-square"></i> <a href="atom10/">Atom 1.0 Feed</a>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                @if (Model.NewsList.Count() > 0)
+                                {
+                                    <ul class="news-list">
+                                        @foreach (SingleNews singleNews in Model.NewsList)
+                                        {
+                                            <li>
+                                                <article class="row">
+                                                    <figure class="col-sm-3">
+                                                        <a href="@(singleNews.NewsId + "-" + singleNews.NewsTitle.ToFriendlyUrlDashedString() + "/")">
+                                                            <img src="@(singleNews.MainImageFilePath.IsNotEmptyOrWhiteSpace() ? singleNews.MainImageFilePath : "/Content/frontend/images/news-small.jpg")" class="img-responsive img-thumbnail" alt="" width="320" />
+                                                        </a>
+                                                    </figure>
+                                                    <div class="col-sm-9">
+                                                        <h3 class="top-0"><span class="label label-default">@singleNews.CategoryName</span></h3>
+                                                        <h2>
+                                                            <a href="@(singleNews.NewsId + "-" + singleNews.NewsTitle.ToFriendlyUrlDashedString() + "/")">
+                                                                @singleNews.NewsTitle
+                                                            </a>
+                                                        </h2>
+                                                        <p>@Html.Raw(singleNews.NewsContent.StripHtml().TrimToMaxLength(150, "..."))</p>
+                                                        <p><i class="fa fa-clock-o"></i> @singleNews.NewsDate.ToShortDateString() @singleNews.NewsDate.ToShortTimeString() - <i class="fa fa-user"></i> <em>@singleNews.UserName</em></p>
+                                                    </div>
+                                                </article>
+                                            </li>
+                                        }
+                                    </ul>
+
+                                    <hr />
+
+                                    <div class="text-center">
+                                        <div class="label label-primary">@MVCwCMS.Resources.Strings.Displaying @Model.NewsList.ItemStart - @Model.NewsList.ItemEnd @MVCwCMS.Resources.Strings.Of @Model.NewsList.TotalItemCount item(s)</div>
+
+                                        @Html.BootstrapPager(
+                                            Model.NewsList.PageSize,
+                                            Model.NewsList.PageNumber,
+                                            Model.NewsList.TotalItemCount,
+                                            routeValues: new RouteValueDictionary()
+                                                {
+                                                    { "c", Model.FilterCategoryId },
+                                                    { "d", Model.FilterNewsDate }
+                                                })
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-info" role="alert">@MVCwCMS.Resources.Strings_News.NoNewsToDisplay</div>
+                                }
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="news-details bottom-20">
+                                <h1>@Model.NewsTitle</h1>
+
+                                <i class="fa fa-clock-o"></i> @MVCwCMS.Resources.Strings_News.PostedOn @Model.NewsDate.Value.ToShortDateString() at @Model.NewsDate.Value.ToShortTimeString() - <i class="fa fa-user"></i> <em>@Model.UserName</em>
+
+                                <hr />
+
+                                @if (Model.MainImageFilePath.IsNotEmptyOrWhiteSpace())
+                                {
+                                    <img src="@Model.MainImageFilePath" class="img-responsive img-thumbnail" alt="" />
+                                }
+
+                                <p>@Html.Raw(Model.NewsContent)</p>
+
+                                <div class="text-right">
+                                    <a href="#" class="btn btn-primary go-back"><i class="fa fa-arrow-left"></i> @MVCwCMS.Resources.Strings.GoBack</a>
+                                </div>
+
+                                <hr />
+
+                                <div class="well">
+                                    @if (FrontEndSessions.CurrentSubscription.IsNull())
+                                    {
+                                        SubscriptionConfiguration subscriptionConfiguration = new SubscriptionConfigurations().GetSubscriptionConfiguration();
+                                        if (subscriptionConfiguration.SignInPageId.IsNotNull() && subscriptionConfiguration.RegisterPageId.IsNotNull())
+                                        {
+                                            CmsPageActionlink cmsPageActionlinkSignIn = cmsPages.GetCmsPageActionlink(subscriptionConfiguration.SignInPageId, Model.LanguageCode);
+                                            CmsPageActionlink cmsPageActionlinkRegister = cmsPages.GetCmsPageActionlink(subscriptionConfiguration.RegisterPageId, Model.LanguageCode);
+                                            <h4>@MVCwCMS.Resources.Strings_News.LeaveAComment</h4>
+                                            @Html.BootstrapTextAreaFor(m => m.NewsComment, isLabelVisible: false, isReadOnly: true)
+
+                                            <a href="@(cmsPageActionlinkSignIn.Url)?ReturnUrl=@HttpUtility.UrlEncode(Request.Url.AbsoluteUri)" class="btn btn-success">@cmsPageActionlinkSignIn.Title</a>
+                                            <a href="@(cmsPageActionlinkRegister.Url)" class="btn btn-success">@cmsPageActionlinkRegister.Title</a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (ViewData.IsFormVisible())
+                                        {
+                                            <h4>Leave a Comment:</h4>
+                                            using (Html.BootstrapBeginForm(actionName: "Index", controllerName: "Default", isDirtyFormMonitored: false))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.BootstrapValidationSummary()
+
+                                                @Html.BootstrapTextAreaFor(m => m.NewsComment, isLabelVisible: false)
+
+                                                @Html.BootstrapSubmit(className: "btn-success")
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @Html.BootstrapValidationSummary(IsSuccessItemMarkerVisible: false)
+
+                                            <a href="@Request.Url.AbsoluteUri" class="btn btn-success">@MVCwCMS.Resources.Strings.ReloadThisPage</a>
+                                        }
+                                    }
+                                </div>
+
+                                <hr />
+
+                                @if (Model.NewsCommentList.IsNotNull())
+                                {
+                                    foreach (NewsComment newsComment in Model.NewsCommentList)
+                                    {
+                                        <div class="media">
+                                            <img class="media-object pull-left" src="~/Content/frontend/images/comment.png" alt="comment" width="64" />
+                                            <div class="media-body">
+                                                <h4 class="media-heading">
+                                                    <small>
+                                                        <i class="fa fa-clock-o"></i> @MVCwCMS.Resources.Strings_News.PostedOn @newsComment.CommentDate.ToShortDateString() at @newsComment.CommentDate.ToShortTimeString() - <i class="fa fa-user"></i> <em>@newsComment.FirstName</em>
+                                                    </small>
+                                                </h4>
+                                                @newsComment.Comment
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    }
+                                }
+
+                            </div>
+                        }
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="bottom-20">
+                            <div class="page-header">
+                                <h2><i class="fa fa-folder-open"></i> @MVCwCMS.Resources.Strings_News.Categories</h2>
+                            </div>
+                            <ul>
+                                <li><a href="@cmsPageActionlinkNews.Url">@MVCwCMS.Resources.Strings_News.AllCategories</a></li>
+                                @{
+                                    NewsCategories newsCategories = new NewsCategories();
+                                    foreach (NewsCategory newsCategory in newsCategories.GetNewsCategories(isActive: true))
+                                    {
+                                        <li><a href="@(cmsPageActionlinkNews.Url)?c=@newsCategory.CategoryId">@newsCategory.CategoryName</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class="bottom-20">
+                            <div class="page-header">
+                                <h2><i class="fa fa-archive"></i> @MVCwCMS.Resources.Strings_News.Archives</h2>
+                            </div>
+                            <ul>
+                                <li><a href="@cmsPageActionlinkNews.Url">@MVCwCMS.Resources.Strings_News.AllArchives</a></li>
+                                @{
+                                    News news = new News();
+                                    foreach (NewsArchive newsArchive in news.GetNewsArchives())
+                                    {
+                                        <li><a href="@(cmsPageActionlinkNews.Url)?d=@newsArchive.Value">@newsArchive.Text</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert">@MVCwCMS.Resources.Strings_News.NewsNotFound</div>
+                <div class="text-right">
+                    <a href="#" class="btn btn-primary go-back"><i class="fa fa-arrow-left"></i> @MVCwCMS.Resources.Strings.GoBack</a>
+                </div>
+            }
+        </div>
+    }
+}

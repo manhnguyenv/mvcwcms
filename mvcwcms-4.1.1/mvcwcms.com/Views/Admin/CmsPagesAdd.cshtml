@@ -1,0 +1,61 @@
+﻿@model BackEndCmsPagesAdd
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.BootstrapSubmit()
+                    @Html.BootstrapResetForm()
+                    @Html.BootstrapButtonRedirect("/Admin/CmsPages", MVCwCMS.Resources.Strings.CmsPages)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-lg-6">
+                        @{
+                            CmsPages cmsPages = new CmsPages();
+                            var selectListBackEndCmsPages = new SelectList(cmsPages.GetAllPages(true), "PageId", "PageName", Model.PageParentId);
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.PageParentId, selectListBackEndCmsPages, MVCwCMS.Resources.Strings.NoParent, autoFocus: true)
+
+                        @Html.BootstrapTextBoxFor(m => m.PageName)
+
+                        @{
+                            PageTemplates pageTemplates = new PageTemplates();
+                            var selectListBackEndPageTemplates = new SelectList(pageTemplates.GetAllPageTemplates(isActive: true), "PageTemplateId", "Title");
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.PageTemplateId, selectListBackEndPageTemplates, "Specified URL", className: "OnChangePageTemplateId")
+
+                        <div class="form-group">
+                            @Html.BootstrapTextBoxFor(m => m.Segment)
+                            <div class="row text-right">
+                                <div class="col-xs-12">
+                                    <button type="button" id="SegmentBtn" class="btn btn-default btn-sm set-segment">Get from Page name</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        @Html.BootstrapTextBoxFor(m => m.Url)
+
+                        @Html.BootstrapDropDownListFor(m => m.Target, FormHelper.GetSelectListForTarget(FormHelper.SelectedValueForTarget.SameWindow))
+
+                        @Html.BootstrapCheckBoxFor(m => m.ShowInMainMenu)
+
+                        @Html.BootstrapCheckBoxFor(m => m.ShowInBottomMenu)
+
+                        @Html.BootstrapCheckBoxFor(m => m.ShowInSitemap)
+
+                        @Html.BootstrapCheckBoxFor(m => m.IsActive)
+
+                        @Html.BootstrapCheckBoxFor(m => m.IsAccessRestricted)
+
+                        @Html.BootstrapCheckBoxFor(m => m.IsHomePage)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

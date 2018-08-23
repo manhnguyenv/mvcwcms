@@ -1,0 +1,53 @@
+﻿@model FrontEndSubscriptionProfile
+@using (Html.BootstrapBeginForm(actionName: "Index", controllerName: "Default", isDirtyFormMonitored: false))
+{
+    <div class="panel panel-default">
+        @if (ViewData.IsFormVisible())
+        {
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @Html.BootstrapValidationSummary()
+
+                <div class="col-sm-6">
+                    @Html.BootstrapTextBoxFor(m => m.Email, isReadOnly: true)
+
+                    @Html.BootstrapTextBoxFor(m => m.JoinDate, isReadOnly: true)
+                    
+                    <hr />
+                    @Html.BootstrapCheckBoxFor(m => m.WantsNewsletter)
+                    <hr />
+                </div>
+                <div class="col-sm-6">
+                    @Html.BootstrapTextBoxFor(m => m.FirstName)
+
+                    @Html.BootstrapTextBoxFor(m => m.LastName)
+                    
+                    @Html.BootstrapTextBoxFor(m => m.Birthdate, className: "date-mask")
+
+                    @{
+                        Countries countries = new Countries();
+                        var selectListBackEndCountries = new SelectList(countries.GetAllCountries(), "CountryCode", "CountryName");
+                    }
+                    @Html.BootstrapDropDownListFor(m => m.CountryCode, selectListBackEndCountries)
+
+                    @Html.BootstrapTextBoxFor(m => m.City)
+
+                    @Html.BootstrapTextBoxFor(m => m.PostCode)
+
+                    @Html.BootstrapTextBoxFor(m => m.Address)
+
+                    @Html.BootstrapTextBoxFor(m => m.PhoneNumber)
+                </div>
+            </div>
+            <div class="panel-footer">
+                @Html.BootstrapSubmit(className: "btn-success", isConfirmActive: true)
+            </div>
+        }
+        else
+        {
+            <div class="panel-body">
+                @Html.BootstrapValidationSummary(IsSuccessItemMarkerVisible: false)
+            </div>
+        }
+    </div>
+}

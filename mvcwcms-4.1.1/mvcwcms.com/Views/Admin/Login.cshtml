@@ -1,0 +1,32 @@
+﻿@model BackEndLogin
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <img src="~/Content/backend/images/logo.png" alt="logo" class="img-responsive center-block" />
+                </div>
+                <div class="panel-body">
+                    @using (Html.BootstrapBeginForm(isDirtyFormMonitored: false))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.BootstrapValidationSummary()
+                        if (!ViewData.ModelState.ContainsKey("success"))
+                        {
+                            @Html.BootstrapTextBoxFor(m => m.Username)
+                            @Html.BootstrapPasswordFor(m => m.Password)
+                            @Html.HiddenFor(m => m.ReturnUrl)
+                            <button type="submit" class="btn btn-lg btn-success btn-block">@Html.Raw(MVCwCMS.Resources.Strings.Submit)</button>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#Username').val('administrator');
+        $('#Password').val('12345678');
+    });
+</script>

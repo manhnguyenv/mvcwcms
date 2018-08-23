@@ -1,0 +1,41 @@
+﻿@model FrontEndSubscriptionPasswordForgot
+@using (Html.BootstrapBeginForm(actionName: "Index", controllerName: "Default", isDirtyFormMonitored: false))
+{
+    <div class="panel panel-default">
+        @if (ViewData.IsFormVisible())
+        {
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @Html.BootstrapValidationSummary()
+
+                <div class="col-sm-6">
+                    @Html.BootstrapTextBoxFor(m => m.Email)
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-2">
+                        @Html.BootstrapSubmit(className: "btn-success")
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        @{
+                            SubscriptionConfiguration subscriptionConfiguration = new SubscriptionConfigurations().GetSubscriptionConfiguration();
+                            CmsPages cmsPages = new CmsPages();
+                            if (subscriptionConfiguration.SignInPageId.IsNotNull())
+                            {
+                                CmsPageActionlink cmsPageActionlink = cmsPages.GetCmsPageActionlink(subscriptionConfiguration.SignInPageId, Model.LanguageCode);
+                                <i class="fa fa-sign-in"></i> <a href="@cmsPageActionlink.Url">@cmsPageActionlink.Title</a>
+                            }
+                        }
+                    </div>
+                </div>                
+            </div>
+        }
+        else
+        {
+            <div class="panel-body">
+                @Html.BootstrapValidationSummary(IsSuccessItemMarkerVisible: false)
+            </div>
+        }
+    </div>
+}

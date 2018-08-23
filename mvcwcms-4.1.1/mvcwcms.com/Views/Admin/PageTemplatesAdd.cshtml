@@ -1,0 +1,32 @@
+﻿@model BackEndPageTemplatesAdd
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.BootstrapSubmit()
+                    @Html.BootstrapResetForm()
+                    @Html.BootstrapButtonRedirect("/Admin/PageTemplates", MVCwCMS.Resources.Strings.PageTemplates)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-lg-6">
+                        @Html.BootstrapTextBoxFor(m => m.Title, autoFocus: true)
+
+                        @Html.BootstrapCheckBoxFor(m => m.IsActive)
+
+                        @Html.BootstrapTextAreaFor(m => m.HtmlCode, className: "html-code", rows: 20)
+                        <div class="form-inline">
+                            <span>@MVCwCMS.Resources.Strings.InsertModuleAtCursor: </span>
+                            @Html.DropDownList("DropDownListModules", ExtensionsHelper.GetCmsModules(true), "", new { @class = "form-control insert-at-cursor-onchange", data_insert_at_cursor_textarea_id = "HtmlCode" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

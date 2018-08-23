@@ -1,0 +1,79 @@
+﻿@model BackEndNewsAddEdit
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <text>
+                            @Html.BootstrapSubmit(isConfirmActive: true)
+                            @Html.BootstrapResetForm()
+                        </text>
+                    }
+                    @Html.BootstrapButtonRedirect("/Admin/News", MVCwCMS.Resources.Strings_News.News)
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8 col-sm-7">
+                                <div class="well well-sm">
+                                    @Html.HiddenFor(m => m.NewsId)
+
+                                    @Html.BootstrapDateTimePickerFor(m => m.NewsDate)
+
+                                    @{
+                                        NewsCategories newsCategories = new NewsCategories();
+                                        var selectListNewsCategories = new SelectList(newsCategories.GetNewsCategories(), "CategoryId", "CategoryName");
+                                    }
+                                    @Html.BootstrapDropDownListFor(m => m.CategoryId, selectListNewsCategories)
+
+                                    @Html.BootstrapCheckBoxFor(m => m.IsActive)
+                                </div>
+                            </div>
+                            <div class="col-lg-3  col-md-4 col-sm-5">
+                                <div class="well well-sm">
+                                    @Html.BootstrapFilePathFor(m => m.MainImageFilePath, resourceType: "Images")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    @for (int i = 0; i < Model.NewsLanguages.Count; i++)
+                                    {
+                                        <li class="@(i == 0 ? "active" : "")"><a href="#Tab-@Model.NewsLanguages[i].LanguageCode" data-toggle="tab">@Model.NewsLanguages[i].LanguageName</a></li>
+                                    }
+                                </ul>
+                                <div class="tab-content">
+                                    <br />
+                                    @for (int i = 0; i < Model.NewsLanguages.Count; i++)
+                                    {
+                                        @Html.HiddenFor(m => m.NewsLanguages[i].LanguageCode)
+                                        @Html.HiddenFor(m => m.NewsLanguages[i].LanguageName)
+                                        <div class="tab-pane fade @(i == 0 ? "in active" : "")" id="Tab-@Model.NewsLanguages[i].LanguageCode">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @Html.BootstrapTextBoxFor(m => m.NewsLanguages[i].NewsTitle)
+                                                </div>
+                                            </div>
+
+                                            @Html.BootstrapTextAreaFor(m => m.NewsLanguages[i].NewsContent, className: "tinymce-editor")
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

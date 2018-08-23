@@ -1,0 +1,63 @@
+﻿@model BackEndInstallation
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="panel panel-default buffer-top">
+            <div class="panel-heading text-center">
+                <h3>@MVCwCMS.Resources.Strings.Installation - MVCwCMS</h3>
+            </div>
+            <div class="panel-body">
+                @if (ViewData.IsFormVisible())
+                {
+                    <div class="alert alert-warning">
+                        <p><i class="fa fa-warning"></i> @MVCwCMS.Resources.Strings.InstallationInstructions</p>
+                    </div>
+                    using (Html.BootstrapBeginForm(isDirtyFormMonitored: false))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.BootstrapValidationSummary()
+                        if (!ViewData.ModelState.ContainsKey("success"))
+                        {
+                            @Html.BootstrapDropDownListFor(m => m.AdminLanguageCode, FormHelper.GetSelectListForAdminLanguageCodes(), null, "toggle-admin-language-code")
+                            @Html.HiddenFor(m => m.IsChangeAdminLanguageCode)
+
+                            @Html.BootstrapTextBoxFor(m => m.SqlServerName, labelTooltip: MVCwCMS.Resources.Strings.TooltipSqlServerName)
+                    
+                            @Html.BootstrapTextBoxFor(m => m.DatabaseName)
+                    
+                            @Html.BootstrapCheckBoxFor(m => m.CreateDbIfDoesNotExist, labelTooltip: MVCwCMS.Resources.Strings.TooltipCreateDbIfDoesNotExist)
+                    
+                            @Html.BootstrapCheckBoxFor(m => m.IgnoreDbExistsWarning, labelTooltip: MVCwCMS.Resources.Strings.TooltipIgnoreDbExistsWarning, className: "toggle-ignore-db-exists-warning")
+
+                            @Html.BootstrapCheckBoxFor(m => m.ResetDbIfDoesExist, labelTooltip: MVCwCMS.Resources.Strings.TooltipResetDbIfDoesExist, className: "toggle-reset-db-if-does-exists")
+
+                            @Html.BootstrapDropDownListFor(m => m.SqlAuthenticationType, FormHelper.GetSelectListForSqlAuthenticationTypes(), null, "toggle-sql-authentication-type")
+                    
+                            @Html.BootstrapTextBoxFor(m => m.CurrentWindowsUser, isReadOnly: true)
+                            @Html.HiddenFor(m => m.CurrentWindowsUser)
+
+                            @Html.BootstrapTextBoxFor(m => m.SqlUsername, labelTooltip: MVCwCMS.Resources.Strings.MustHaveValidSqlLogin)
+                    
+                            @Html.BootstrapPasswordFor(m => m.SqlPassword)
+
+                            <button type="submit" class="btn btn-lg btn-success btn-block">@Html.Raw(MVCwCMS.Resources.Strings.Submit)</button>
+                        }
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-success">
+                        <p><i class="fa fa-check"></i> @MVCwCMS.Resources.Strings.InstallationSuccess</p>               
+                    </div>
+                    <div class="alert alert-warning">
+                        <p><i class="fa fa-warning"></i> @MVCwCMS.Resources.Strings.InstallationFollowUp</p>
+                        <ul>
+                            <li>@MVCwCMS.Resources.Strings.Username: administrator</li>
+                            <li>@MVCwCMS.Resources.Strings.Password: 12345678</li>
+                        </ul>
+                    </div>
+                    <a href="~/Admin" class="btn btn-lg btn-success btn-block">@MVCwCMS.Resources.Strings.Continue</a>
+                }  
+            </div>
+        </div>
+    </div>
+</div>

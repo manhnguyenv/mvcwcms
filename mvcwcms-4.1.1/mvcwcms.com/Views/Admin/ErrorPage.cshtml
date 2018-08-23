@@ -1,0 +1,5 @@
+﻿<p><strong>@ViewBag.ErrorMessage</strong></p>
+<p>@Html.Raw(MVCwCMS.Resources.Strings.NotAllowedToBrowsePage):</p>
+<ul>
+    <li>@Html.ActionLink(Request.Url.Scheme + "://" + Request.Url.Authority + "/Admin/" + (string)ViewBag.ErrorPage, (string)ViewBag.ErrorPage)</li>
+</ul>

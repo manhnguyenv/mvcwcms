@@ -1,0 +1,49 @@
+USE [{#DatabaseName#}]
+GO
+
+DECLARE @n char(1)
+SET @n = char(10)
+
+DECLARE @stmt nvarchar(max)
+
+-- procedures
+SELECT @stmt = isnull( @stmt + @n, '' ) +
+	'drop procedure [' + schema_name(schema_id) + '].[' + name + ']'
+FROM sys.procedures
+
+-- check constraints
+SELECT @stmt = isnull( @stmt + @n, '' ) +
+	'alter table [' + schema_name(schema_id) + '].[' + object_name( parent_object_id ) + ']    drop constraint [' + name + ']'
+FROM sys.check_constraints
+
+-- functions
+SELECT @stmt = isnull( @stmt + @n, '' ) +
+	'drop function [' + schema_name(schema_id) + '].[' + name + ']'
+FROM sys.objects
+WHERE TYPE in ( 'FN', 'IF', 'TF' )
+
+-- views
+SELECT @stmt = isnull( @stmt + @n, '' ) +
+	'drop view [' + schema_name(schema_id) + '].[' + name + ']'
+FROM sys.views
+
+-- foreign keys
+SELECT @stmt = isnull( @stmt + @n, '' ) +
+	'alter table [' + schema_name(schema_id) + '].[' + object_name( parent_object_id ) + '] drop constraint [' + name + ']'
+FROM sys.foreign_keys
+
+-- tables
+SELECT @stmt = isnull( @stmt + @n, '' ) +
+	'drop table [' + schema_name(schema_id) + '].[' + name + ']'
+FROM sys.tables
+
+-- user defined types
+SELECT @stmt = isnull( @stmt + @n, '' ) +
+	'drop type [' + schema_name(schema_id) + '].[' + name + ']'
+FROM sys.types
+WHERE is_user_defined = 1
+
+
+--PRINT CAST(@stmt AS NTEXT)
+EXEC sp_executesql @stmt
+GO

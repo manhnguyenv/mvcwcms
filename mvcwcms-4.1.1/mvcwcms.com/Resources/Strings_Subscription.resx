@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivationKeyAlreadyUsed" xml:space="preserve">
+    <value>&lt;h2&gt;It seems your verification link has been already used.&lt;/h2&gt;
+&lt;p&gt;If you have any enquiries please don't hesitate to contact us.&lt;/p&gt;</value>
+  </data>
+  <data name="ActivationKeyInvalid" xml:space="preserve">
+    <value>&lt;h2&gt;It seems your verification link is not valid.&lt;/h2&gt;
+&lt;p&gt;Please try again by copying and pasting your verification link into your web browser.&lt;/p&gt;
+&lt;p&gt;If it still doesn't work please don't hesitate to contact us to report this issue.&lt;/p&gt;</value>
+  </data>
+  <data name="ActivationKeySuccess" xml:space="preserve">
+    <value>&lt;h2&gt;Thanks for completing your registration!&lt;/h2&gt;
+&lt;p&gt;Now you will be able to use all features of our website.&lt;/p&gt;</value>
+  </data>
+  <data name="EmailPwForgotBody" xml:space="preserve">
+    <value>&lt;p&gt;Dear {$FirstName},&lt;/p&gt;
+&lt;p&gt;{$SiteName} received a request to reset your password. To proceed please click the following link:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&lt;a href="{$PasswordResetUrl}"&gt;{$PasswordResetUrl}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you are unable to click the link above, copy and paste it into your web browser. If you are unable to do that, don't hesitate to contact us through our website.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Best regards,&lt;/p&gt;
+&lt;p&gt;The team at {$SiteName}&lt;/p&gt;
+&lt;p&gt;{$Url}&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Please note: This email message was sent from a notification-only system that cannot accept incoming e-mail. Please do not reply to this message.&lt;/p&gt;
+&lt;p&gt;If you did not request a password reset, please ignore this message. You won't hear from us again.&lt;/p&gt;
+&lt;p&gt;Do not forward this email. The reset link is private.&lt;/p&gt;</value>
+  </data>
+  <data name="EmailPwForgotSubject" xml:space="preserve">
+    <value>Password reset for {$SiteName}</value>
+  </data>
+  <data name="EmailVerifyAccountBody" xml:space="preserve">
+    <value>&lt;p&gt;Dear {$FirstName},&lt;/p&gt;
+&lt;p&gt;{$SiteName} received a request to create an account for you. To verify your email and start using your account, please click the following link:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&lt;a href="{$VerificationUrl}"&gt;{$VerificationUrl}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you are unable to click the link above, copy and paste it into your web browser. If you are unable to do that, don't hesitate to contact us through our website.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Best regards,&lt;/p&gt;
+&lt;p&gt;The team at {$SiteName}&lt;/p&gt;
+&lt;p&gt;{$Url}&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Please note: This email message was sent from a notification-only system that cannot accept incoming e-mail. Please do not reply to this message.&lt;/p&gt;
+&lt;p&gt;If you did not request a {$SiteName} account, please ignore this message. You won't hear from us again.&lt;/p&gt;
+&lt;p&gt;Do not forward this email. The verify link is private.&lt;/p&gt;</value>
+  </data>
+  <data name="EmailVerifyAccountSubject" xml:space="preserve">
+    <value>Please complete your registration to {$SiteName}</value>
+  </data>
+  <data name="PasswordResetUrlNotValid" xml:space="preserve">
+    <value>It seems your password reset link is not valid.
+Please try again by copying and pasting your password reset link into your web browser.
+If it still doesn't work please don't hesitate to contact us to report this issue.</value>
+  </data>
+  <data name="ProfileEditSuccess" xml:space="preserve">
+    <value>Your profile has been successfully edited</value>
+  </data>
+  <data name="SubscriptionEmail" xml:space="preserve">
+    <value>Subscription email</value>
+  </data>
+  <data name="SubscriptionEmailNotValid" xml:space="preserve">
+    <value>Email not valid</value>
+  </data>
+  <data name="SubscriptionEmailOrPasswordNotValid" xml:space="preserve">
+    <value>Email and/or Password not valid</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>Subscriptions</value>
+  </data>
+  <data name="SubscriptionsAdd" xml:space="preserve">
+    <value>Add subscription</value>
+  </data>
+  <data name="SubscriptionsConfiguration" xml:space="preserve">
+    <value>Subscriptions configuration</value>
+  </data>
+  <data name="SubscriptionsDelete" xml:space="preserve">
+    <value>Delete subscription</value>
+  </data>
+  <data name="SubscriptionsEdit" xml:space="preserve">
+    <value>Edit subscription</value>
+  </data>
+  <data name="SubscriptionStatusActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="SubscriptionStatusInactive" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="SubscriptionStatusNotVerified" xml:space="preserve">
+    <value>Not verified</value>
+  </data>
+  <data name="Thanks" xml:space="preserve">
+    <value>&lt;h2&gt;Thanks for registering!&lt;/h2&gt;
+&lt;p&gt;Please check your email and follow the link to confirm your identity and start using your account.&lt;/p&gt;</value>
+  </data>
+  <data name="AccountDetails" xml:space="preserve">
+    <value>Account details</value>
+  </data>
+  <data name="PersonalDetails" xml:space="preserve">
+    <value>Personal details</value>
+  </data>
+  <data name="EmailSubscriptionAddedBody" xml:space="preserve">
+    <value>&lt;p&gt;Here is the latest subscription to {$Url}:&lt;/p&gt;
+&lt;table style="border-collapse:collapse;border-spacing:0;width:100%"&gt;
+  &lt;tr&gt;
+    &lt;th style="border:1px #bbb solid;padding:10px;text-align:left;vertical-align:top;width:1%;white-space:nowrap;"&gt;Subscription email:&lt;/th&gt;
+    &lt;td style="border:1px #bbb solid;padding:10px;vertical-align:top;"&gt;{$subscriptionEmail}&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th style="border:1px #bbb solid;padding:10px;text-align:left;vertical-align:top;width:1%;white-space:nowrap;"&gt;IP address:&lt;/th&gt;
+    &lt;td style="border:1px #bbb solid;padding:10px;vertical-align:top;"&gt;{$ipAddress}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="EmailSubscriptionAddedSubject" xml:space="preserve">
+    <value>Subscription added to {$Url}</value>
+  </data>
+</root>

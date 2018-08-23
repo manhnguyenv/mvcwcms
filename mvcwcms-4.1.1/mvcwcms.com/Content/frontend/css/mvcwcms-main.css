@@ -1,0 +1,154 @@
+﻿/* Layout */
+html, body { height: 100%; }
+#homepage {
+    height: 100%;
+    padding-top: 53px;
+    font-family: Verdana;
+}
+#subpage {
+    height: 100%;
+    padding-top: 53px;
+    font-family: Verdana;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -200px;
+    padding-bottom: 200px;
+}
+footer {
+    background-image: url(/Content/frontend/images/footer.png);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    background-color: #C3C3C3;
+    height: 320px;
+}
+.breadcrumb {
+    margin-top:20px;
+}
+
+
+/* Marketing section */
+.marketing .col-sm-4 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: normal;
+}
+.marketing .col-sm-4 p {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+/* Helpers */
+.bottom-5 { margin-bottom:5px; }
+.bottom-10 { margin-bottom:10px; }
+.bottom-15 { margin-bottom:15px; }
+.bottom-20 { margin-bottom:20px; }
+.inline { display:inline; }
+.inline-block { display:inline-block; }
+.top-0 { margin-top:0; }
+
+/* Form elements */
+.form-control::-moz-placeholder {
+  color: #EEE;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #EEE;
+}
+.form-control::-webkit-input-placeholder {
+  color: #EEE;
+}
+.checkbox label { font-weight:bold; }
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+    margin-left: 0;
+}
+
+
+/* FooTable */
+.footable-row-detail-inner { margin-left:20px; }
+.footable-row-detail-row { border-bottom:1px solid #ddd; }
+
+
+/* Headings */
+h1{font-size: 23px;}
+h2{font-size: 21px;}
+h3{font-size: 19px;}
+h4{font-size: 17px;}
+h5{font-size: 16px;}
+h6{font-size: 15px;}
+
+
+/* Navbar */
+.navbar-brand {
+    padding: 12px 0 0 15px;
+    margin-right: 10px;
+    width: 250px;
+    font-size: 36px;
+    /*color:#7C873F !important;
+    text-shadow: 0px 0px 2px #FFF;*/
+    color: #222 !important;
+    text-shadow: 0px 0px 2px #ffffff;
+}
+.navbar-brand:hover {
+    text-shadow: 0px 0px 4px #ffffff;
+}
+.navbar-underline-hover > li > a {
+    border-bottom: 2px solid transparent;
+}
+.navbar-underline-hover > li > a:hover,
+.navbar-underline-hover > li > a:focus {
+    border-bottom: 2px solid #fff;
+}
+
+
+/* Validation */
+input.input-validation-error,
+textarea.input-validation-error,
+select.input-validation-error,
+select.input-validation-error + div > button.selectpicker /* Fix a bug where the bootstrap-select does not show the red border */
+{
+    border: 1px solid #e80c4d;
+}
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+.validation-summary-valid {
+    display: none;
+}
+.field-validation-error {
+    display: none;
+}
+.child-list-unstyled ul {
+    padding-left: 0;
+    list-style: none;
+}
+.error { display:block; color:#f00; }
+.alert ul {
+    padding-left: 18px;
+}
+
+
+/* Media queries */
+@media (min-width: 320px) {
+    #homepage { padding-top:50px; }
+}
+@media (min-width: 540px) {
+    #homepage { padding-top:51px; }
+}
+@media (min-width: 768px) {
+
+}
+@media (min-width: 1200px) {
+
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    #homepage { padding-top:105px; }
+}

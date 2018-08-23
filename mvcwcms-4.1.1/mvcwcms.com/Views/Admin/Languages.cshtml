@@ -1,0 +1,52 @@
+﻿@model BackEndLanguagesList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-sm-4">
+                        @Html.BootstrapTextBoxFor(m => m.LanguageCode)
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.BootstrapTextBoxFor(m => m.LanguageName)
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.BootstrapDropDownListFor(m => m.IsActive, FormHelper.GetSelectListForYesNo(), MVCwCMS.Resources.Strings.Any)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @Html.BootstrapApplyFilter()
+                    @Html.BootstrapResetFilter()
+                    @Html.BootstrapButtonAdd("/Admin/LanguagesAdd")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.LanguageList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+
+                    WebGridHelper webGrid = new WebGridHelper(Model.LanguageList, defaultSort: "LanguageName", sortDirection: SortDirection.Ascending, rowsPerPage: 10);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonEdit("/Admin/LanguagesEdit/" + item.LanguageCode as string + "/")</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("", "", @<text>@Html.BootstrapButtonDelete("/Admin/LanguagesDelete", item.LanguageCode as object, item.LanguageName as string)</text>, style: "col-10"),
+                            webGrid.ExtendedColumn("LanguageName", MVCwCMS.Resources.Strings.LanguageName),
+                            webGrid.ExtendedColumn("LanguageCode", MVCwCMS.Resources.Strings.LanguageCode, style: "col-130"),
+                            webGrid.ExtendedColumn("IsActive", MVCwCMS.Resources.Strings.Active, format: @<text>@Html.BootstrapIsTicked(item.IsActive as bool?)</text>, style: "col-80 text-center")
+                        )
+                    );
+                }
+            }
+        </div>
+    </div>
+</div>

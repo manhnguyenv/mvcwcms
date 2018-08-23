@@ -1,0 +1,25 @@
+﻿@model BackEndImpersonate
+@if (BackEndSessions.CurrentUser.GroupId == 1)  //This check is necessary here and inside the calling view (Index.cshtml)
+{
+    using (Html.BootstrapBeginForm(actionName: "", controllerName: "", isDirtyFormMonitored: false))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>@MVCwCMS.Resources.Strings.Impersonate</strong>
+            </div>
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @Html.BootstrapValidationSummary()
+
+                @{
+                    Users users = new Users();
+                    var selectListUsers = new SelectList(users.GetAllUsers().Where(u => u.UserName != BackEndSessions.CurrentUser.UserName).Select(u => new { Username = u.UserName, UserGroup = u.UserName + " (" + u.GroupName + ")" }), "UserName", "UserGroup");
+                }
+                @Html.BootstrapDropDownListFor(m => m.Username, selectListUsers)
+            </div>
+            <div class="panel-footer">
+                @Html.BootstrapSubmit()
+            </div>
+        </div>
+    }
+}

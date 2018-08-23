@@ -1,0 +1,120 @@
+﻿@model BackEndMediaItemsList
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm(formMethod: FormMethod.Get, isDirtyFormMonitored: false))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @MVCwCMS.Resources.Strings_MediaGalleries.CurrentMediaGallery
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-4">
+                        @Html.BootstrapTextBoxFor(m => m.MediaGalleryCode, isReadOnly: true)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.BootstrapValidationSummary()
+
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <div class="col-sm-4">
+                            @{
+                                MediaTypes mediaTypes = new MediaTypes();
+                                var selectListMediaTypes = new SelectList(mediaTypes.GetMediaTypes(), "MediaTypeId", "MediaTypeName", Model.MediaTypeId);
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.MediaTypeId, selectListMediaTypes, MVCwCMS.Resources.Strings.Any)
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.BootstrapDropDownListFor(m => m.IsActive, FormHelper.GetSelectListForYesNo(), MVCwCMS.Resources.Strings.Any)
+                        </div>
+                    }
+                </div>
+                <div class="panel-footer">
+                    @if (ViewData.IsFormVisible())
+                    {
+                        <text>
+                            @Html.BootstrapApplyFilter()
+                            @Html.BootstrapResetFilter()
+                            @Html.BootstrapButtonAdd("/Admin/MediaItemsAdd/" + Model.MediaGalleryCode)
+                        </text>
+                    }
+                    @Html.BootstrapButtonRedirect("/Admin/MediaGalleries", MVCwCMS.Resources.Strings_MediaGalleries.MediaGalleries)
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            @if (Model.MediaItemsList.IgnoreNulls().Count() > 0)
+            {
+                using (Html.BootstrapBeginForm("", "", isDirtyFormMonitored: false))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            @MVCwCMS.Resources.Strings_MediaGalleries.EditMediaItemsAndSubmit
+                        </div>
+                        <div class="panel-body">
+                            <button type="submit" id="media-items-submit" class="btn btn-success action-post-confirm" title="@MVCwCMS.Resources.Strings.Submit" data-action="/Admin/MediaItemsEdit/@Model.MediaGalleryCode"><i class="fa fa-share fa-rotate-180"></i> @MVCwCMS.Resources.Strings.Submit</button>
+                        </div>
+                    </div>
+
+                    WebGridHelper webGrid = new WebGridHelper(Model.MediaItemsList, defaultSort: "Ordering", sortDirection: SortDirection.Ascending, canPage: false, canSort: false);
+                    @webGrid.GetExtendedHtml(
+                        columns: webGrid.ExtendedColumns(
+                            webGrid.ExtendedColumn("MediaItemId", MVCwCMS.Resources.Strings.Id, style: "col-20"),
+                            webGrid.ExtendedColumn("", "✖", @<text>
+                                                                @{int index = webGrid.Rows.IndexOf(item);}
+                                                                @Html.HiddenFor(m => m.MediaItemsList[index].MediaItemId)
+                                                                @Html.BootstrapCheckBoxFor(m => m.MediaItemsList[index].IsMarkedForDeletion, isLabelVisible: false)
+                                                             </text>, style: "col-20 text-center", thAttributes: "title=\"" + MVCwCMS.Resources.Strings.DeleteItem + "\""),
+                            webGrid.ExtendedColumn("", MVCwCMS.Resources.Strings.Preview, @<text>
+                                                                                            @{int index = webGrid.Rows.IndexOf(item);}
+                                                                                            @Html.HiddenFor(m => m.MediaItemsList[index].MediaItemPath)
+                                                                                            @Html.FilePathPreview(item.MediaItemPath as string)
+                                                                                           </text>, style: "col-10 text-center"),
+                            webGrid.ExtendedColumn("", "✔", @<text>
+                                                                @{int index = webGrid.Rows.IndexOf(item);}
+                                                                @Html.BootstrapRadioButtonFor(m => m.SelectedIsMainItem, (int)item.MediaItemId, index, (bool)item.IsMainItem)
+                                                             </text>, style: "col-20 text-center", thAttributes: "title=\"" + MVCwCMS.Resources.Strings.IsMainItem + "\""),
+                            webGrid.ExtendedColumn("MediaTypeName", MVCwCMS.Resources.Strings_MediaGalleries.MediaTypeName, style: "col-110"),
+                            webGrid.ExtendedColumn("", MVCwCMS.Resources.Strings_MediaGalleries.MediaItemTitle, @<text>
+                                                                                                                    @{int index = webGrid.Rows.IndexOf(item);}
+                                                                                                                    <ul class="nav nav-tabs">
+                                                                                                                        @for (int i = 0; i < item.MediaItemLanguagesTitles.Count; i++)
+                                                                                                                        {
+                                                                                                                            <li class="@(i == 0 ? "active" : "")"><a href="#Tab-@(index)-@(item.MediaItemLanguagesTitles[i].LanguageCode)" data-toggle="tab">@(item.MediaItemLanguagesTitles[i].LanguageName)</a></li>
+                                                                                                                        }
+                                                                                                                    </ul>
+                                                                                                                    <div class="tab-content">
+                                                                                                                        @for (int i = 0; i < item.MediaItemLanguagesTitles.Count; i++)
+                                                                                                                        {
+                                                                                                                            @Html.HiddenFor(m => m.MediaItemsList[index].MediaItemLanguagesTitles[i].LanguageCode)
+                                                                                                                            @Html.HiddenFor(m => m.MediaItemsList[index].MediaItemLanguagesTitles[i].LanguageName)
+                                                                                                                            <div class="tab-pane fade @(i == 0 ? "in active" : "")" id="Tab-@(index)-@(item.MediaItemLanguagesTitles[i].LanguageCode)">
+                                                                                                                                @Html.BootstrapTextBoxFor(m => m.MediaItemsList[index].MediaItemLanguagesTitles[i].MediaItemTitle, isLabelVisible: false)
+                                                                                                                            </div>
+                                                                                                                        }
+                                                                                                                    </div>
+                                                                                                                 </text>),
+                            webGrid.ExtendedColumn("", MVCwCMS.Resources.Strings.Ordering, @<text>
+                                                                                                @{int index = webGrid.Rows.IndexOf(item);}
+                                                                                                @Html.BootstrapTextBoxFor(m => m.MediaItemsList[index].Ordering, className: "digits-mask text-right", isLabelVisible: false)
+                                                                                            </text>, style: "col-90"),
+                            webGrid.ExtendedColumn("", MVCwCMS.Resources.Strings.Active, format: @<text>
+                                                                                                    @{int index = webGrid.Rows.IndexOf(item);}
+                                                                                                    @Html.BootstrapCheckBoxFor(m => m.MediaItemsList[index].IsActive, isLabelVisible: false)
+                                                                                                  </text>, style: "col-80 text-center")
+                        )
+                    );
+                }
+            }
+        </div>
+    </div>
+</div>

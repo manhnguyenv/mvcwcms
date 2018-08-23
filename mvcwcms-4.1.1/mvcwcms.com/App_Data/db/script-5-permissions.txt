@@ -1,0 +1,231 @@
+﻿
+------------------------------
+USE [{#DatabaseName#}]
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'{#SqlUsername#}') CREATE USER [{#SqlUsername#}] FOR LOGIN [{#SqlUsername#}] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+GRANT EXECUTE ON [dbo].[sp_cms_news_categories_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_categories_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_categories_insert_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_groups_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_groups_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_groups_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_groups_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_pages_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_pages_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_pages_move_down] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_pages_move_up] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_pages_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_pages_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_users_change_password] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_users_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_users_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_config_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_users_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_config_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_admin_users_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_content_templates_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_content_templates_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_content_templates_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_content_templates_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_countries_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_global_configuration_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_global_configuration_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_languages_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_languages_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_languages_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_languages_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_galleries_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_galleries_insert_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_galleries_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_items_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_items_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_items_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_comments_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_items_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_media_types_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_page_templates_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_page_templates_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_page_templates_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_page_templates_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_languages_insert_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_languages_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_move_down] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_move_up] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_pages_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_shared_content_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_shared_content_insert_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_shared_content_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscription_statuses_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_activation] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_change_password] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_comments_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_config_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_comments_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_config_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_comments_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_insert] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_profile_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_pw_change_with_resetkey_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_pw_resetkey_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_subscriptions_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_insert_update] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_delete] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+GRANT EXECUTE ON [dbo].[sp_cms_news_select] TO [{#SqlUsername#}] AS [dbo]
+GO
+
+

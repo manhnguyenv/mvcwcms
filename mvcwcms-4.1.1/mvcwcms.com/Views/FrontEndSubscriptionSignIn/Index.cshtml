@@ -1,0 +1,40 @@
+﻿@model FrontEndSubscriptionSignIn
+@using (Html.BootstrapBeginForm(actionName: "Index", controllerName: "Default", isDirtyFormMonitored: false))
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+            @Html.BootstrapValidationSummary()
+
+            <div class="col-sm-6">
+                @* Due to a Chrome's bug it ignores autocomplete="off" *@
+                <input type="text" class="hidden" name="FakeUsernameRemembered" />
+                <input type="password" class="hidden" name="FakePasswordRemembered" />
+
+                @Html.BootstrapTextBoxFor(m => m.Email)
+
+                @Html.BootstrapPasswordFor(m => m.Password)
+
+                @Html.HiddenFor(m => m.ReturnUrl)
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-sm-2">
+                    @Html.BootstrapSubmit(className: "btn-success")
+                </div>
+                <div class="col-sm-4 text-right">
+                    @{
+                        SubscriptionConfiguration subscriptionConfiguration = new SubscriptionConfigurations().GetSubscriptionConfiguration();
+                        CmsPages cmsPages = new CmsPages();
+                        if (subscriptionConfiguration.ForgotPasswordPageId.IsNotNull())
+                        {
+                            CmsPageActionlink cmsPageActionlink = cmsPages.GetCmsPageActionlink(subscriptionConfiguration.ForgotPasswordPageId, Model.LanguageCode);
+                            <i class="fa fa-warning"></i> <a href="@cmsPageActionlink.Url">@Html.Raw(MVCwCMS.Resources.Strings.ForgotYourPassword)</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,38 @@
+﻿@model FrontEndNews
+@{
+    NewsConfiguration newsConfiguration = new NewsConfigurations().GetNewsConfiguration();
+    if (newsConfiguration.IsNewsActive && newsConfiguration.NewsPageId.IsNotNull())
+    {
+        <div class="news-summary-container">
+            @if (Model.IsNotNull())
+            {
+                CmsPages cmsPages = new CmsPages();
+                CmsPageActionlink cmsPageActionlink = cmsPages.GetCmsPageActionlink(newsConfiguration.NewsPageId, Model.LanguageCode);
+                <ul class="news-list">
+                    @foreach (SingleNews singleNews in Model.NewsList)
+                    {
+                        <li>
+                            <article class="row">
+                                <figure class="col-sm-3">
+                                    <a href="@(cmsPageActionlink.Url + singleNews.NewsId + "-" + singleNews.NewsTitle.ToFriendlyUrlDashedString() + "/")">
+                                        <img src="@(singleNews.MainImageFilePath.IsNotEmptyOrWhiteSpace() ? singleNews.MainImageFilePath : "/Content/frontend/images/news-small.jpg")" class="img-responsive img-thumbnail" alt="" width="320" />
+                                    </a>
+                                </figure>
+                                <div class="col-sm-9">
+                                    <h3 class="top-0"><span class="label label-default">@singleNews.CategoryName</span></h3>
+                                    <h2>
+                                        <a href="@(cmsPageActionlink.Url + singleNews.NewsId + "-" + singleNews.NewsTitle.ToFriendlyUrlDashedString() + "/")">
+                                            @singleNews.NewsTitle
+                                        </a>
+                                    </h2>
+                                    <p>@Html.Raw(singleNews.NewsContent.StripHtml().TrimToMaxLength(255, "..."))</p>
+                                    <p><i class="fa fa-clock-o"></i> @singleNews.NewsDate.ToShortDateString() - <i class="fa fa-user"></i> <em>@singleNews.UserName</em></p>
+                                </div>
+                            </article>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    }
+}

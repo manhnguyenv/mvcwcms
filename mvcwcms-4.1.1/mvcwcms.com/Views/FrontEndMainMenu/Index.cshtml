@@ -1,0 +1,29 @@
+﻿@model FrontEndCmsPage
+@{ GlobalConfiguration globalConfiguration = new GlobalConfigurations().GetGlobalConfiguration(); }
+<div class="navbar-wrapper">
+    <div class="container">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">@MVCwCMS.Resources.Strings.ToggleNavigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="~/@Model.LanguageFolder" target="_top">
+                        @*<img src="~/Content/frontend/images/logo.png" alt="Logo" class="img-responsive" />*@
+                        @globalConfiguration.SiteName
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    @Html.GetMainMenu(Model, "nav navbar-nav navbar-underline-hover")
+
+                    @Html.GetLanguagePicker(Model, "navbar-nav navbar-underline-hover")
+
+                    @Html.GetSubscriptionPanel(Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

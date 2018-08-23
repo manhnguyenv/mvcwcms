@@ -1,0 +1,113 @@
+﻿@model BackEndGlobalConfigurationEdit
+<div class="row">
+    <div class="col-xs-12">
+        <p class="bg-warning"><i class="fa fa-info-circle"></i> @Html.Raw(MVCwCMS.Resources.Strings.NoteToClearCacheToTakeEffect)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.BootstrapSubmit()
+                    @Html.BootstrapResetForm()
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#general" data-toggle="tab">@Html.Raw(MVCwCMS.Resources.Strings.General)</a>
+                        </li>
+                        <li>
+                            <a href="#status" data-toggle="tab">@Html.Raw(MVCwCMS.Resources.Strings.Status)</a>
+                        </li>
+                        <li>
+                            <a href="#seo-and-tracking" data-toggle="tab">@Html.Raw(MVCwCMS.Resources.Strings.SeoAndTracking)</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content col-lg-6">
+                        <br />
+                        <div class="tab-pane fade in active" id="general">
+                            @Html.BootstrapTextBoxFor(m => m.SiteName)
+
+                            @Html.BootstrapTextBoxFor(m => m.NotificationEmail)
+
+                            @Html.BootstrapCheckBoxFor(m => m.IsCanonicalizeActive, labelTooltip: MVCwCMS.Resources.Strings.TooltipCanonicalize)
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.DomainName)
+                                <div class="form-inline form-inline-2-controls">
+                                    @Html.DropDownListFor(m => m.HostNameLabel, FormHelper.GetSelectListForHostNameLabel(), "", new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.DomainName, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.DomainName)
+                            </div>
+
+                            @{
+                                var selectListServerTimeZones = new SelectList(TimeZoneInfo.GetSystemTimeZones(), "Id", "DisplayName", Model.DefaultLanguageCode);
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.ServerTimeZone, selectListServerTimeZones)
+
+                            @Html.BootstrapDropDownListFor(m => m.DateFormat, FormHelper.GetSelectListForDateFormat())
+
+                            @Html.BootstrapDropDownListFor(m => m.TimeFormat, FormHelper.GetSelectListForTimeFormat())
+
+                            @{
+                                Languages languages = new Languages();
+                                var selectListBackEndLanguages = new SelectList(languages.GetAllLanguages(isActive: true), "LanguageCode", "LanguageName", Model.DefaultLanguageCode);
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.DefaultLanguageCode, selectListBackEndLanguages)
+
+                            @{
+                                PageTemplates pageTemplates = new PageTemplates();
+                                var selectListBackEndPageTemplates = new SelectList(pageTemplates.GetAllPageTemplates(isActive: true), "PageTemplateId", "Title", Model.DefaultErrorPageTemplateId);
+                            }
+                            @Html.BootstrapDropDownListFor(m => m.DefaultErrorPageTemplateId, selectListBackEndPageTemplates)
+                        </div>
+                        <div class="tab-pane fade" id="status">
+                            @Html.BootstrapCheckBoxFor(m => m.IsOffline)
+
+                            @Html.BootstrapTextBoxFor(m => m.OfflineCode)
+
+                            <div class="form-group">
+                                <label>@MVCwCMS.Resources.Strings.OfflineUrl</label>
+                                <p class="form-control-static">
+                                    <a href="~/?OfflineCode=@Model.OfflineCode" target="_blank">@Request.Url.Scheme://@Request.Url.Authority/?OfflineCode=@Model.OfflineCode</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="seo-and-tracking">
+                            @Html.BootstrapTextBoxFor(m => m.MetaTitle)
+
+                            @Html.BootstrapTextAreaFor(m => m.MetaKeywords)
+
+                            @Html.BootstrapTextAreaFor(m => m.MetaDescription, rows: 3)
+
+                            @Html.BootstrapDropDownListFor(m => m.Robots, FormHelper.GetSelectListForMetaRobots())
+                            
+                            @Html.BootstrapTextBoxFor(m => m.BingVerificationCode)
+
+                            @Html.BootstrapTextBoxFor(m => m.GoogleVerificationCode)
+
+                            @Html.BootstrapTextBoxFor(m => m.GoogleSearchCode)
+
+                            @Html.BootstrapTextAreaFor(m => m.GoogleAnalyticsTrackingCode, rows: 3, labelTooltip: MVCwCMS.Resources.Strings.TooltipGoogleAnalyticsTrackingCode)
+
+                            <div class="form-group">
+                                <label title="Submit this URL to Google Web Master Tools" data-toggle="tooltip">@MVCwCMS.Resources.Strings.GoogleMultilingualSitemap</label>
+                                <p class="form-control-static">
+                                    <a href="~/sitemap.xml" target="_blank">@Request.Url.Scheme://@Request.Url.Authority/sitemap.xml</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model BackEndSubscriptionsConfigurationEdit
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BootstrapBeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.BootstrapSubmit(isConfirmActive: true)
+                    @Html.BootstrapResetForm()
+                </div>
+                <div class="panel-body">
+
+                    @Html.AntiForgeryToken()
+                    @Html.BootstrapValidationSummary()
+
+                    <div class="col-lg-6">
+                        @Html.BootstrapCheckBoxFor(m => m.IsSubscriptionActive)
+
+                        @{
+                            List<CmsPage> pageItems = new CmsPages().GetAllPages(true);
+                            var selectListCmsPagesRegisterPageId = new SelectList(pageItems, "PageId", "PageName", Model.RegisterPageId);
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.RegisterPageId, selectListCmsPagesRegisterPageId)
+
+                        @{
+                            var selectListCmsPagesSignInPageId = new SelectList(pageItems, "PageId", "PageName", Model.SignInPageId);
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.SignInPageId, selectListCmsPagesSignInPageId)
+
+                        @{
+                            var selectListCmsPagesForgotPasswordPageId = new SelectList(pageItems, "PageId", "PageName", Model.ForgotPasswordPageId);
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.ForgotPasswordPageId, selectListCmsPagesForgotPasswordPageId)
+
+                        @{
+                            var selectListCmsPagesChangePasswordPageId = new SelectList(pageItems, "PageId", "PageName", Model.ChangePasswordPageId);
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.ChangePasswordPageId, selectListCmsPagesChangePasswordPageId)
+
+                        @{
+                            var selectListCmsPagesProfilePageId = new SelectList(pageItems, "PageId", "PageName", Model.ProfilePageId);
+                        }
+                        @Html.BootstrapDropDownListFor(m => m.ProfilePageId, selectListCmsPagesProfilePageId)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
