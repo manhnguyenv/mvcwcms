@@ -1,11 +1,9 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
-using MVCwCMS.ViewModels;
-using System.Collections.Generic;
-using System.Collections;
-using System;
-using MVCwCMS.Filters;
+﻿using MVCwCMS.Filters;
 using MVCwCMS.Helpers;
+using MVCwCMS.Models;
+using MVCwCMS.ViewModels;
+using System;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -35,6 +33,7 @@ namespace MVCwCMS.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -67,9 +66,11 @@ namespace MVCwCMS.Controllers
 
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyAdded);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.EmailAlreadyExists);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;
@@ -114,6 +115,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndSubscriptionsEdit);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -138,13 +140,16 @@ namespace MVCwCMS.Controllers
                 case 0:
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyEdited);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     ViewData.IsFormVisible(false);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.EmailAlreadyExists);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;
@@ -166,12 +171,15 @@ namespace MVCwCMS.Controllers
                 case 0:
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyDeleted);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemUsedSomewhereElse);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;
@@ -205,6 +213,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndSubscriptionsConfigurationEdit);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -220,13 +229,15 @@ namespace MVCwCMS.Controllers
             switch (result)
             {
                 case 0:
-                    
+
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyEdited);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     ViewData.IsFormVisible(false);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;

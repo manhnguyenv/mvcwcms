@@ -1,10 +1,8 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
+﻿using MVCwCMS.Filters;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using MVCwCMS.Filters;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -49,7 +47,7 @@ namespace MVCwCMS.Controllers
                     {
                         backEndNewsCategoryAddEdit.CategoryId = id;
                         backEndNewsCategoryAddEdit.IsActive = backEndNewsCategoryList[0].IsActive;
-                        
+
                         foreach (Language language in allActiveLanguages)
                         {
                             backEndNewsCategoryLanguagesAddEdit = new BackEndNewsCategoryLanguagesAddEdit();
@@ -90,6 +88,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndNewsCategoryAddEdit);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -118,15 +117,18 @@ namespace MVCwCMS.Controllers
                         case 0:
                             //success
                             break;
+
                         case 2:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                             ViewData.IsFormVisible(false);
                             break;
+
                         case 3:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings_News.CategoryNameAlreadyExists + " (" + backEndNewsCategoryLanguagesAddEdit.LanguageName + ")");
                             break;
+
                         default:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
@@ -167,7 +169,6 @@ namespace MVCwCMS.Controllers
             return View(backEndNewsCategoryAddEdit);
         }
 
-
         //  /Admin/NewsCategoriesDelete/
         [HttpPost]
         [IsRestricted]
@@ -181,12 +182,15 @@ namespace MVCwCMS.Controllers
                 case 0:
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyDeleted);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemUsedSomewhereElse);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;

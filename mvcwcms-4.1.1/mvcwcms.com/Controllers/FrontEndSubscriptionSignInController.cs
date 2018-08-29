@@ -1,10 +1,5 @@
 ﻿using MVCwCMS.Models;
-using MVCwCMS.Helpers;
 using MVCwCMS.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
@@ -34,6 +29,7 @@ namespace MVCwCMS.Controllers
 
             return View(frontEndSubscriptionSignIn);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(FrontEndCmsPage page, FrontEndSubscriptionSignIn frontEndSubscriptionSignIn)

@@ -1,14 +1,11 @@
-﻿using MVCwCMS.Models;
+﻿using MVCwCMS.Helpers;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Optimization;
-using MVCwCMS.Helpers;
 
 namespace MVCwCMS.Controllers
 {
@@ -107,7 +104,7 @@ namespace MVCwCMS.Controllers
                 }
 
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture((language.IsNotNull() && language.IsActive) ? language.LanguageCode : page.LanguageCode);
-                
+
                 return View(page);
             }
             else

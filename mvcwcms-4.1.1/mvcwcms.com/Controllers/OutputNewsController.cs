@@ -1,14 +1,12 @@
-﻿using MVCwCMS.Models;
+﻿using MVCwCMS.Helpers;
+using MVCwCMS.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using MVCwCMS.Helpers;
 using System.ServiceModel.Syndication;
 using System.Threading;
-using System.Globalization;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -73,7 +71,7 @@ namespace MVCwCMS.Controllers
 
                     result.Items = items;
                 }
-            }           
+            }
 
             return result;
         }

@@ -1,9 +1,7 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
+﻿using MVCwCMS.Filters;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
-using System.Collections.Generic;
-using System.Collections;
-using MVCwCMS.Filters;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -36,6 +34,7 @@ namespace MVCwCMS.Controllers
             };
             return View(backEndAdminPagesAdd);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -51,7 +50,6 @@ namespace MVCwCMS.Controllers
                         if (p.PermissionValue)
                             groupsPermissions += g.GroupId + "," + p.PermissionCode.ToString().ToLower() + "|";
                     }
-                    
                 }
 
                 AdminPages adminPages = new AdminPages();
@@ -66,9 +64,11 @@ namespace MVCwCMS.Controllers
 
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyAdded);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.PageAlreadyExists);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;
@@ -107,6 +107,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndAdminPagesEdit);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -122,7 +123,6 @@ namespace MVCwCMS.Controllers
                         if (p.PermissionValue)
                             groupsPermissions += g.GroupId + "," + p.PermissionCode.ToString().ToLower() + "|";
                     }
-
                 }
 
                 AdminPages adminPages = new AdminPages();
@@ -132,16 +132,18 @@ namespace MVCwCMS.Controllers
                     case 0:
                         BackEndSessions.CurrentMenu = adminPages.GetMenuByGroupId(BackEndSessions.CurrentUser.GroupId);
 
-                        
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyEdited);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                         ViewData.IsFormVisible(false);
                         break;
+
                     case 3:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.PageAlreadyExists);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;
@@ -166,12 +168,15 @@ namespace MVCwCMS.Controllers
 
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyDeleted);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.PageHasSubPages);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;
@@ -195,12 +200,15 @@ namespace MVCwCMS.Controllers
 
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.PageSuccessfullyMoved);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.PageCannotBeMoved);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;
@@ -224,12 +232,15 @@ namespace MVCwCMS.Controllers
 
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.PageSuccessfullyMoved);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.PageCannotBeMoved);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;

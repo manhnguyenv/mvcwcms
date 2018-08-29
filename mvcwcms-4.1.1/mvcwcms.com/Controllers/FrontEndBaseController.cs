@@ -1,9 +1,4 @@
 ﻿using MVCwCMS.Helpers;
-using MVCwCMS.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
@@ -12,7 +7,7 @@ namespace MVCwCMS.Controllers
     {
         public FrontEndBaseController()
             : base()
-        { 
+        {
             //Constructor
         }
 

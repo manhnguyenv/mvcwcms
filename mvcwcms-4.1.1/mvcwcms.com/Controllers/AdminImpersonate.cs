@@ -1,16 +1,9 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
+﻿using MVCwCMS.Helpers;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
 using System.Collections.Generic;
-using System.Collections;
-using System;
-using System.IO;
-using System.Text;
-using System.Web;
-using MVCwCMS.Helpers;
-using System.Web.Script.Serialization;
-using MVCwCMS.Filters;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -23,6 +16,7 @@ namespace MVCwCMS.Controllers
         {
             return PartialView();
         }
+
         [ChildActionOnly]
         [HttpPost]
         public ActionResult Impersonate(BackEndImpersonate backEndImpersonate)

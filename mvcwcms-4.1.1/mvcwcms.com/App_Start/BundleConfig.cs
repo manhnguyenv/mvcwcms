@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace MVCwCMS
 {
@@ -35,8 +33,6 @@ namespace MVCwCMS
                         "~/Content/backend/css/mvcwcms-*" //This entry will catch all new modules named mvcwcms-xxxxx.css, where xxxxx stands for the name of the new module. e.g. mvcwcms-news.css
                         ));
 
-
-
             //Frontend
 
             bundles.Add(new ScriptBundle("~/bundles/frontend-js").Include(
@@ -63,7 +59,6 @@ namespace MVCwCMS
                         "~/Content/frontend/css/mvcwcms-*" //This entry will catch all new modules named mvcwcms-xxxxx.css, where xxxxx stands for the name of the new module. e.g. mvcwcms-news.css
                         ));
 
-            
             //Enables optimization only in Release mode
 #if DEBUG
             BundleTable.EnableOptimizations = false;

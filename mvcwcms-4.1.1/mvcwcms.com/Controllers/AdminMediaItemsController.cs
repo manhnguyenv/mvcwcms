@@ -1,13 +1,10 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
-using System.Linq;
+﻿using MVCwCMS.Filters;
+using MVCwCMS.Helpers;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
 using System.Collections.Generic;
-using System.Collections;
-using MVCwCMS.Filters;
-using System;
-using MVCwCMS.Helpers;
-using System.Configuration;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -60,6 +57,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndMediaItemsAdd);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -92,6 +90,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndMediaItemsAdd);
         }
+
         private void ProcessMultiFilePath(List<string> multiFilePath, int mediaTtpeId, BackEndMediaItemsAdd backEndMediaItemsAdd)
         {
             MediaItems mediaItems = new MediaItems();
@@ -106,9 +105,11 @@ namespace MVCwCMS.Controllers
                     case 0:
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyAdded + ": " + filePath);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings_MediaGalleries.MediaItemAlreadyExists + ": " + filePath);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError + ": " + filePath);
                         break;
@@ -135,12 +136,15 @@ namespace MVCwCMS.Controllers
                             case 0:
                                 ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyDeleted + ": " + mediaItem.MediaItemId);
                                 break;
+
                             case 2:
                                 ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist + ": " + mediaItem.MediaItemId);
                                 break;
+
                             case 3:
                                 ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemUsedSomewhereElse + ": " + mediaItem.MediaItemId);
                                 break;
+
                             default:
                                 ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError + ": " + mediaItem.MediaItemId);
                                 break;
@@ -153,20 +157,22 @@ namespace MVCwCMS.Controllers
                             case 0:
                                 ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyEdited + ": " + mediaItem.MediaItemId);
                                 break;
+
                             case 2:
                                 ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist + ": " + mediaItem.MediaItemId);
                                 break;
+
                             default:
                                 ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError + ": " + mediaItem.MediaItemId);
                                 break;
                         }
                     }
                 }
-                
             }
 
             return RedirectToAction("MediaItems", new { id = id });
         }
+
         private string GetLanguageCodesMediaTitles(List<MediaItemLanguageTitle> mediaItemLanguagesTitles)
         {
             string result = string.Empty;

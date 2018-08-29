@@ -1,4 +1,6 @@
-﻿using MVCwCMS.Helpers;
+﻿using MVCwCMS.App_Start;
+using MVCwCMS.Data;
+using MVCwCMS.Helpers;
 using MVCwCMS.Models;
 using System.Configuration;
 using System.Diagnostics;
@@ -25,6 +27,9 @@ namespace MVCwCMS
 
         protected void Application_Start()
         {
+            //Init database
+            System.Data.Entity.Database.SetInitializer(new StoreSeedData());
+
             //Prevents information leakage from the X-AspNetMvc-Version header of the HTTP response
             MvcHandler.DisableMvcResponseHeader = true;
 
@@ -59,6 +64,9 @@ namespace MVCwCMS
             DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(DataAnnotationsStringLengthMin), typeof(MinLengthAttributeAdapter));
             DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(DataAnnotationsStringLengthRange), typeof(StringLengthAttributeAdapter));
             DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(DataAnnotationsURL), typeof(RegularExpressionAttributeAdapter));
+
+            //Autofac and Automapper configurations
+            Bootstrapper.Run();
 
             IsApplicationStart = true;
         }

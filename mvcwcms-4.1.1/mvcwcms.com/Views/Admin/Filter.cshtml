@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MVCwCMS.ViewModels.GadgetViewModel>
+@{
+    ViewBag.Title = "Filter";
+    Layout = "~/Views/Shared/_LayoutTest.cshtml";
+}
+<div class="container" style="margin-top:60px;">
+    <div class="jumbotron">
+        @if (Model != null && Model.ToList().Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Html.Label(item.Name)
+                    </div>
+                    @Html.Partial("Gadget", item)
+                </div>
+            }
+        }
+        else
+        {
+            <span>Item not found.</span>
+        }
+    </div>
+</div>

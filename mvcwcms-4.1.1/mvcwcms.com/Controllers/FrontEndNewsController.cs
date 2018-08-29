@@ -1,13 +1,11 @@
-﻿using MVCwCMS.Models;
+﻿using MVCwCMS.Filters;
 using MVCwCMS.Helpers;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MvcPaging;
-using MVCwCMS.Filters;
 
 namespace MVCwCMS.Controllers
 {
@@ -39,7 +37,7 @@ namespace MVCwCMS.Controllers
                     frontEndNews = new FrontEndNews()
                     {
                         LanguageCode = page.LanguageCode,
-                        NewsList = newsList.ToBootstrapPagedList(p, 5), 
+                        NewsList = newsList.ToBootstrapPagedList(p, 5),
                         FilterCategoryId = filterCategoryId,
                         FilterNewsDate = filterNewsDate,
                         NewsId = null,
@@ -170,6 +168,7 @@ namespace MVCwCMS.Controllers
                         EmailHelper email = new EmailHelper(globalConfiguration.NotificationEmail, globalConfiguration.NotificationEmail, subject, body);
                         email.Send();
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError + " (Database)");
                         break;
@@ -204,7 +203,7 @@ namespace MVCwCMS.Controllers
                 NewsTitle = null,
                 NewsContent = null
             };
-            
+
             return View(frontEndNews);
         }
     }

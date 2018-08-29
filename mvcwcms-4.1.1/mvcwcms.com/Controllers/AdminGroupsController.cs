@@ -1,10 +1,7 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
+﻿using MVCwCMS.Filters;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
-using System.Collections.Generic;
-using System.Collections;
-using MVCwCMS.Filters;
-using System.Linq;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -34,6 +31,7 @@ namespace MVCwCMS.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -51,9 +49,11 @@ namespace MVCwCMS.Controllers
 
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyAdded);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.GroupNameAlreadyExists);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;
@@ -84,6 +84,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndGroupsEdit);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -98,19 +99,22 @@ namespace MVCwCMS.Controllers
                     case 0:
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyEdited);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                         ViewData.IsFormVisible(false);
                         break;
+
                     case 3:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.GroupNameAlreadyExists);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;
                 }
             }
-            
+
             return View(backEndGroupsEdit);
         }
 
@@ -127,13 +131,16 @@ namespace MVCwCMS.Controllers
                 case 0:
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyDeleted);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     ViewData.IsFormVisible(false);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemUsedSomewhereElse);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;

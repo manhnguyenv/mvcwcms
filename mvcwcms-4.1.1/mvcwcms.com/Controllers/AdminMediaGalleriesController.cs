@@ -1,11 +1,10 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
-using MVCwCMS.ViewModels;
-using System.Collections.Generic;
-using System.Collections;
-using MVCwCMS.Filters;
-using System;
+﻿using MVCwCMS.Filters;
 using MVCwCMS.Helpers;
+using MVCwCMS.Models;
+using MVCwCMS.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -96,6 +95,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndMediaGalleries);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -120,15 +120,18 @@ namespace MVCwCMS.Controllers
                         case 0:
                             //success
                             break;
+
                         case 2:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                             ViewData.IsFormVisible(false);
                             break;
+
                         case 3:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings_MediaGalleries.MediaGalleryCodeAlreadyExists);
                             break;
+
                         default:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
@@ -183,12 +186,15 @@ namespace MVCwCMS.Controllers
 
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyDeleted);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemUsedSomewhereElse);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;

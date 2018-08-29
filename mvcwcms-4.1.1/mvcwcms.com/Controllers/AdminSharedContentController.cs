@@ -1,10 +1,8 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
+﻿using MVCwCMS.Filters;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using MVCwCMS.Filters;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -50,7 +48,7 @@ namespace MVCwCMS.Controllers
                         backEndSharedContent.SharedContentCode = id;
                         backEndSharedContent.NewSharedContentCode = id;
                         backEndSharedContent.IsActive = backEndSharedContentList[0].IsActive;
-                        
+
                         foreach (Language language in allActiveLanguages)
                         {
                             backEndSharedContentLanguages = new BackEndSharedContentLanguagesAddEdit();
@@ -91,6 +89,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndSharedContent);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -109,15 +108,18 @@ namespace MVCwCMS.Controllers
                         case 0:
                             //success
                             break;
+
                         case 2:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                             ViewData.IsFormVisible(false);
                             break;
+
                         case 3:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings_SharedContent.SharedContentCodeAlreadyExists);
                             break;
+
                         default:
                             isLoopSuccessful = false;
                             ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
@@ -154,7 +156,6 @@ namespace MVCwCMS.Controllers
 
             return View(backEndSharedContent);
         }
-        
 
         //  /Admin/SharedContentDelete/
         [HttpPost]
@@ -169,12 +170,15 @@ namespace MVCwCMS.Controllers
                 case 0:
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyDeleted);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     break;
+
                 case 3:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemUsedSomewhereElse);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;

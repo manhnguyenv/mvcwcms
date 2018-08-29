@@ -44,6 +44,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Canonicalize, Version=1.3.4876.18158, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Canonicalize.1.3\lib\net40\Canonicalize.dll</HintPath>
       <Private>True</Private>
@@ -73,6 +82,12 @@
     <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -147,6 +162,7 @@
     <Reference Include="SecurityHelper">
       <HintPath>..\libraries\SecurityHelper.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -158,7 +174,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -846,7 +866,27 @@
     <Content Include="Content\shared\js\phone-codes\phone-nl.js" />
     <Content Include="Content\shared\js\phone-codes\phone-ru.js" />
     <Content Include="Content\shared\js\phone-codes\phone-uk.js" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\acer-aspire.jpg" />
+    <Content Include="images\Alldaymall.jpg" />
+    <Content Include="images\asus-latest.jpg" />
+    <Content Include="images\asus-memo.jpg" />
+    <Content Include="images\Christian-Bale.jpg" />
+    <Content Include="images\dell-inspiron.jpg" />
+    <Content Include="images\dragon-touch.jpg" />
+    <Content Include="images\hp-pavilion.jpg" />
+    <Content Include="images\hp-stream.jpg" />
+    <Content Include="images\htc-desire.jpg" />
+    <Content Include="images\neutab.jpg" />
+    <Content Include="images\nokia-lumia.jpg" />
+    <Content Include="images\prontotec.jpg" />
+    <Content Include="images\samsung-galaxy.jpg" />
+    <Content Include="images\sanyo-innuendo.jpg" />
+    <Content Include="images\ulefone.jpg" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\site.js" />
     <Content Include="public\41646D696E6973747261746F72Images\GalleryExample\photo-example-01.jpg" />
     <Content Include="public\41646D696E6973747261746F72Images\GalleryExample\photo-example-02.jpg" />
     <Content Include="public\41646D696E6973747261746F72Images\GalleryExample\photo-example-03.jpg" />
@@ -1553,9 +1593,12 @@
     <Content Include="_app_offline.htm" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Configurations\CategoryConfiguration.cs" />
+    <Compile Include="Configurations\GadgetConfiguration.cs" />
     <Compile Include="Controllers\AdminAdminPagesController.cs" />
     <Compile Include="Controllers\AdminGroupsController.cs" />
     <Compile Include="Controllers\AdminImpersonate.cs" />
@@ -1574,6 +1617,7 @@
     <Compile Include="Controllers\AdminSharedContentController.cs" />
     <Compile Include="Controllers\AdminNewsController.cs" />
     <Compile Include="Controllers\AdminSubscriptionsController.cs" />
+    <Compile Include="Controllers\AdminTestController.cs" />
     <Compile Include="Controllers\AdminUsersController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\FrontEndBaseController.cs" />
@@ -1595,6 +1639,8 @@
     <Compile Include="Controllers\InstallationController.cs" />
     <Compile Include="Controllers\OutputNewsController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
+    <Compile Include="Data\StoreEntities.cs" />
+    <Compile Include="Data\StoreSeedData.cs" />
     <Compile Include="Filters\ExportModelStateToTempData.cs" />
     <Compile Include="Filters\ImportModelStateFromTempData.cs" />
     <Compile Include="Filters\IsFrontEndChildActionRestrictedAttribute.cs" />
@@ -1628,7 +1674,17 @@
     <Compile Include="HtmlHelpers\HtmlHelperFooterMenu.cs" />
     <Compile Include="HtmlHelpers\HtmlHelperMainMenu.cs" />
     <Compile Include="HtmlHelpers\HtmlHelperSitemap.cs" />
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\AdminPages.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Gadget.cs" />
     <Compile Include="Models\GeoIpCountries.cs" />
     <Compile Include="Models\GeoIpCities.cs" />
     <Compile Include="Models\Devices.cs" />
@@ -1661,6 +1717,8 @@
     <Compile Include="ModuleConnectors\SharedContentsConnector.cs" />
     <Compile Include="ModuleConnectors\MediaGalleriesConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\GadgetRepository.cs" />
     <Compile Include="Resources\Strings_News.it.Designer.cs">
       <DependentUpon>Strings_News.it.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1721,6 +1779,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.it.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\GadgetService.cs" />
     <Compile Include="ViewModels\BackEndAdminPagesAdd.cs" />
     <Compile Include="ViewModels\BackEndAdminPagesEdit.cs" />
     <Compile Include="ViewModels\BackEndAdminPagesList.cs" />
@@ -1760,6 +1820,7 @@
     <Compile Include="ViewModels\BackEndSharedContentAddEdit.cs" />
     <Compile Include="ViewModels\BackEndSharedContentList.cs" />
     <Compile Include="ViewModels\BackEndSubscriptionsAdd.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FrontEndNews.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1777,6 +1838,8 @@
     <Compile Include="ViewModels\FrontEndSubscriptionRegister.cs" />
     <Compile Include="ViewModels\FrontEndContact.cs" />
     <Compile Include="ViewModels\FrontEndError.cs" />
+    <Compile Include="ViewModels\GadgetFormViewModel.cs" />
+    <Compile Include="ViewModels\GadgetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -1886,6 +1949,10 @@
     <Content Include="Views\Admin\NewsAddEdit.cshtml" />
     <Content Include="Views\Admin\NewsComments.cshtml" />
     <Content Include="Views\Admin\NewsCommentsEdit.cshtml" />
+    <Content Include="Views\Admin\Test.cshtml" />
+    <Content Include="Views\Shared\_LayoutTest.cshtml" />
+    <Content Include="Views\Admin\Filter.cshtml" />
+    <Content Include="Views\Shared\Gadget.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

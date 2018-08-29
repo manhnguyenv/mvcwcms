@@ -1,25 +1,19 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
-using MVCwCMS.ViewModels;
-using System.Collections.Generic;
-using System.Collections;
-using System;
-using System.IO;
-using System.Text;
-using System.Web;
+﻿using MVCwCMS.Filters;
 using MVCwCMS.Helpers;
-using System.Web.Script.Serialization;
-using MVCwCMS.Filters;
-using System.Linq;
-using System.Web.Routing;
+using MVCwCMS.Models;
+using MVCwCMS.ViewModels;
+using System;
 using System.Configuration;
+using System.Web;
 using System.Web.Configuration;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace MVCwCMS.Controllers
 {
     public partial class AdminController : AdminBaseController
     {
-        //  /Admin/
+        //  /Admin/Index
         [IsRestricted]
         public ActionResult Index()
         {
@@ -62,6 +56,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndLogin);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -118,6 +113,7 @@ namespace MVCwCMS.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -132,14 +128,15 @@ namespace MVCwCMS.Controllers
                     case 0:
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.PasswordSuccessfullyChanged);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.CurrentPasswordNotValid);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;
                 }
-
             }
 
             return View(backEndChangePassword);
@@ -224,6 +221,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndGlobalConfigurationEdit);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -267,10 +265,12 @@ namespace MVCwCMS.Controllers
 
                     ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.ItemSuccessfullyEdited);
                     break;
+
                 case 2:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                     ViewData.IsFormVisible(false);
                     break;
+
                 default:
                     ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                     break;

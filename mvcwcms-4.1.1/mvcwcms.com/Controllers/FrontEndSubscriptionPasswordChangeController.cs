@@ -1,12 +1,7 @@
-﻿using MVCwCMS.Models;
-using MVCwCMS.Helpers;
+﻿using MVCwCMS.Filters;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MVCwCMS.Filters;
 
 namespace MVCwCMS.Controllers
 {
@@ -37,16 +32,20 @@ namespace MVCwCMS.Controllers
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings.PasswordSuccessfullyChanged);
                         ViewData.IsFormVisible(false);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                         ViewData.IsFormVisible(false);
                         break;
+
                     case 3:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.EmailAlreadyExists);
                         break;
+
                     case 4:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.CurrentPasswordNotValid);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;

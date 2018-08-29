@@ -1,9 +1,8 @@
-﻿using MVCwCMS.Models;
-using System.Web.Mvc;
+﻿using MVCwCMS.Filters;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
 using System.Collections.Generic;
-using System.Collections;
-using MVCwCMS.Filters;
+using System.Web.Mvc;
 
 namespace MVCwCMS.Controllers
 {
@@ -59,6 +58,7 @@ namespace MVCwCMS.Controllers
 
             return View(backEndCmsPagesLanguagesAddEditList);
         }
+
         [HttpPost]
         [IsRestricted]
         [ValidateAntiForgeryToken]
@@ -75,6 +75,7 @@ namespace MVCwCMS.Controllers
                     case 0:
                         //success
                         break;
+
                     default:
                         isLoopSuccessful = false;
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);

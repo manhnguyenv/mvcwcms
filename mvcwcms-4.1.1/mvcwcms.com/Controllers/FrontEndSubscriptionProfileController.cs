@@ -1,12 +1,8 @@
-﻿using MVCwCMS.Models;
+﻿using MVCwCMS.Filters;
 using MVCwCMS.Helpers;
+using MVCwCMS.Models;
 using MVCwCMS.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MVCwCMS.Filters;
 
 namespace MVCwCMS.Controllers
 {
@@ -69,13 +65,16 @@ namespace MVCwCMS.Controllers
                         ModelState.AddResult(ViewData, ModelStateResult.Success, Resources.Strings_Subscription.ProfileEditSuccess);
                         ViewData.IsFormVisible(false);
                         break;
+
                     case 2:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.ItemDoesNotExist);
                         ViewData.IsFormVisible(false);
                         break;
+
                     case 3:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.EmailAlreadyExists);
                         break;
+
                     default:
                         ModelState.AddResult(ViewData, ModelStateResult.Error, Resources.Strings.UnexpectedError);
                         break;
