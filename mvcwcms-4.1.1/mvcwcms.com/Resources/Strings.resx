@@ -1059,4 +1059,7 @@
   <data name="MustHaveValidSqlLogin" xml:space="preserve">
     <value>You must to have a valid SQL login with enough permissions to create a new database along with all the necessary Tables, Stored Procedures and User Functions. E.g. A user with sysadmin Server Role.</value>
   </data>
+  <data name="Test" xml:space="preserve">
+    <value>Store</value>
+  </data>
 </root>
