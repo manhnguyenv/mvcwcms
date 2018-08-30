@@ -7,8 +7,8 @@ namespace MVCwCMS.Configurations
     {
         public CategoryConfiguration()
         {
-            ToTable("Categories");
-            Property(c => c.Name).IsRequired().HasMaxLength(50);
+            ToTable("Category");
+            Property(c => c.Name).IsRequired().HasMaxLength(255);
         }
     }
 }

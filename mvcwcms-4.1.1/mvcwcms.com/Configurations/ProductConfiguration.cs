@@ -11,7 +11,7 @@ namespace MVCwCMS.Configurations
         public ProductConfiguration()
         {
             ToTable("Product");
-            Property(c => c.Name).IsRequired().HasMaxLength(50);
+            Property(c => c.Name).IsRequired().HasMaxLength(255);
             Property(c => c.Price).IsRequired();
             Property(c => c.CategoryId).IsOptional();
             Property(c => c.Code).IsOptional().HasMaxLength(10);

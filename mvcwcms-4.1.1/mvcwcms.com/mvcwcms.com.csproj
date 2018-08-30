@@ -1598,9 +1598,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurations\CategoryConfiguration.cs" />
+    <Compile Include="Configurations\CustomerConfiguration.cs" />
+    <Compile Include="Configurations\CustomerGroupConfiguration.cs" />
     <Compile Include="Configurations\GadgetConfiguration.cs" />
     <Compile Include="Configurations\ProductCategoryConfiguration.cs" />
     <Compile Include="Configurations\ProductConfiguration.cs" />
+    <Compile Include="Configurations\StoreConfiguration.cs" />
+    <Compile Include="Configurations\StoreUserConfiguration.cs" />
+    <Compile Include="Configurations\TeamConfiguration.cs" />
     <Compile Include="Controllers\AdminAdminPagesController.cs" />
     <Compile Include="Controllers\AdminGroupsController.cs" />
     <Compile Include="Controllers\AdminImpersonate.cs" />
@@ -1683,9 +1688,9 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
-    <Compile Include="Migrations\201808301728000_AddFirstVersion.cs" />
-    <Compile Include="Migrations\201808301728000_AddFirstVersion.Designer.cs">
-      <DependentUpon>201808301728000_AddFirstVersion.cs</DependentUpon>
+    <Compile Include="Migrations\201808301930034_AddFirstVersion.cs" />
+    <Compile Include="Migrations\201808301930034_AddFirstVersion.Designer.cs">
+      <DependentUpon>201808301930034_AddFirstVersion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminPages.cs" />
@@ -1968,8 +1973,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808301728000_AddFirstVersion.resx">
-      <DependentUpon>201808301728000_AddFirstVersion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808301930034_AddFirstVersion.resx">
+      <DependentUpon>201808301930034_AddFirstVersion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings_News.it.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

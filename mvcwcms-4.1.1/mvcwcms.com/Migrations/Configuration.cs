@@ -14,13 +14,121 @@
 
         protected override void Seed(StoreEntities context)
         {
-            GetProductCategories().ForEach(c => context.ProductCategories.Add(c));
-            GetProducts().ForEach(c => context.Products.Add(c));
+            GetStores().ForEach(s => context.Stores.Add(s));
+            GetStoreUsers().ForEach(su => context.StoreUsers.Add(su));
+            GetTeams().ForEach(t => context.Teams.Add(t));
+
+            GetCustomers().ForEach(c => context.Customers.Add(c));
+            GetCustomerGroups().ForEach(cg => context.CustomerGroups.Add(cg));
+
+            GetProductCategories().ForEach(pc => context.ProductCategories.Add(pc));
+            GetProducts().ForEach(p => context.Products.Add(p));
 
             GetCategories().ForEach(c => context.Categories.Add(c));
             GetGadgets().ForEach(g => context.Gadgets.Add(g));
 
             context.Commit();
+        }
+
+        private static List<Store> GetStores()
+        {
+            return new List<Store>
+            {
+                new Store {
+                    Id = 1,
+                    Name = "Vân Nguyễn",
+                    Description = "Cửa hàng Vân Nguyễn",
+                    Address = "HH1B Linh Đàm, Hoàng Liệt, Hoàng Mai, Hà Nội",
+                    Phone = "0982411958",
+                    Owner = 1 // Lấy từ StoreUser.Id
+                }
+            };
+        }
+
+        private static List<StoreUser> GetStoreUsers()
+        {
+            return new List<StoreUser>
+            {
+                new StoreUser {
+                    Id = 1, // Link sang Store.Owner
+                    Name = "Nguyễn Vân",
+                    UserName = "manhxu102", // Lấy từ UserName sau khi đăng nhập
+                    Description = "Nguyễn Vân",
+                    Address = "HH1B Linh Đàm, Hoàng Liệt, Hoàng Mai, Hà Nội",
+                    Phone = "0982411958",
+                    Team = 1 // Thuộc đội nhóm nào?
+                }
+            };
+        }
+
+        private static List<Team> GetTeams()
+        {
+            return new List<Team>
+            {
+                new Team {
+                    Id = 1, // Link sang StoreUser.Team
+                    Name = "Nguyễn Vân",
+                    Description = "Nguyễn Vân",
+                    Slogan = "Team Triệu Đô"
+                }
+            };
+        }
+
+        private static List<Customer> GetCustomers()
+        {
+            return new List<Customer>
+            {
+                new Customer {
+                    Id = 1,
+                    Name = "Tý Lưu",
+                    Description = "Tý Lưu",
+                    CustomerGroupId = 1,
+                    UserName = "manhxu102", // Lấy từ UserName sau khi đăng nhập
+                },
+                new Customer {
+                    Id = 2,
+                    Name = "Mơ Nguyễn",
+                    Description = "Mơ Nguyễn",
+                    CustomerGroupId = 2,
+                    UserName = "manhxu102", // Lấy từ UserName sau khi đăng nhập
+                },
+                new Customer {
+                    Id = 3,
+                    Name = "Vân Trần",
+                    Description = "Vân Trần",
+                    CustomerGroupId = 2,
+                    UserName = "manhxu102", // Lấy từ UserName sau khi đăng nhập
+                },
+                new Customer {
+                    Id = 4,
+                    Name = "Hằng Hội",
+                    Description = "Hằng Hội",
+                    CustomerGroupId = 2,
+                    UserName = "manhxu102", // Lấy từ UserName sau khi đăng nhập
+                }
+            };
+        }
+
+        private static List<CustomerGroup> GetCustomerGroups()
+        {
+            return new List<CustomerGroup>
+            {
+                new CustomerGroup {
+                    Id = 1,
+                    Name = "Cấp trên",
+                    UserName = "manhxu102"
+                },
+                new CustomerGroup {
+                    Id = 2,
+                    Name = "Cấp dưới",
+                    UserName = "manhxu102"
+                },
+                new CustomerGroup {
+                    Id = 3,
+                    Name = "Nhóm bán lẻ",
+                    UserName = "manhxu102"
+                }
+            };
         }
 
         private static List<ProductCategory> GetProductCategories()
@@ -175,6 +283,65 @@
                     Name = "Kem face lạnh",
                     Price = 450000,
                     Code = "KFL"
+                }
+            };
+        }
+
+        private static List<Discount> GetDiscounts()
+        {
+            return new List<Discount>
+            {
+                new Discount {
+                    Id = 1,
+                    CustomerId = 1, // Tý Hay
+                    CK = 50, // Tổng đại lý
+                    Level = "Tổng Đại Lý",
+                    Sale = 120000000,
+                    Capital = 60000000,
+                    Profit = 60000000,
+                    Bonus = 3000000,
+                    Salary = 2500000,
+                    TotalProfit = 65500000,
+                    IsActive = true
+                },
+                new Discount {
+                    Id = 2,
+                    CustomerId = 2, // Mơ Nguyễn
+                    CK = 50, // Tổng đại lý
+                    Level = "Tổng Đại Lý",
+                    Sale = 120000000,
+                    Capital = 60000000,
+                    Profit = 60000000,
+                    Bonus = 3000000,
+                    Salary = 2500000,
+                    TotalProfit = 65500000,
+                    IsActive = true
+                },
+                new Discount {
+                    Id = 3,
+                    CustomerId = 3, // Vân Trần
+                    CK = 40, // Đại Lý Cấp 1
+                    Level = "Đại Lý Cấp 1",
+                    Sale = 60000000,
+                    Capital = 36000000,
+                    Profit = 24000000,
+                    Bonus = 2000000,
+                    Salary = 1000000,
+                    TotalProfit = 27000000,
+                    IsActive = true
+                },
+                new Discount {
+                    Id = 4,
+                    CustomerId = 4, // Hằng Hội
+                    CK = 0, // Chi nhánh 2
+                    Level = "Chi nhánh 2",
+                    Sale = 5000000,
+                    Capital = 3750000,
+                    Profit = 1250000,
+                    Bonus = 250000,
+                    Salary = 0,
+                    TotalProfit = 1500000,
+                    IsActive = true
                 }
             };
         }

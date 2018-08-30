@@ -13,7 +13,7 @@ namespace MVCwCMS.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808301728000_AddFirstVersion"; }
+            get { return "201808301930034_AddFirstVersion"; }
         }
         
         string IMigrationMetadata.Source

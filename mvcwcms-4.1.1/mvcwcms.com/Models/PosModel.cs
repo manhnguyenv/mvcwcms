@@ -80,6 +80,56 @@ namespace MVCwCMS.Models
     }
 
     //
+    // 3. Store: Cửa hàng
+    //
+    public class Store : BaseObject
+    {
+        public int Id { get; set; }                 // Khóa chính
+        public string Name { get; set; }            // Tên cửa hàng
+        public string Description { get; set; }     // Miêu tả cửa hàng
+        public string Address { get; set; }         // Địa chỉ cửa hàng
+        public string Phone { get; set; }           // Điện thoại cửa hàng
+        public int Owner { get; set; }              // Ai là chủ cửa hàng?
+
+        public Store()
+        {
+        }
+    }
+
+    //
+    // 4. StoreUser: Người dùng
+    //
+    public class StoreUser : BaseObject
+    {
+        public int Id { get; set; }                 // Khóa chính
+        public string Name { get; set; }            // Tên người dùng
+        public string UserName { get; set; }        // Mã người dùng
+        public string Description { get; set; }     // Miêu tả người dùng
+        public string Address { get; set; }         // Địa chỉ người dùng
+        public string Phone { get; set; }           // Điện thoại người dùng
+        public int Team { get; set; }               // Thuộc nhóm của ai?
+
+        public StoreUser()
+        {
+        }
+    }
+
+    //
+    // 5. Team: Đội nhóm
+    //
+    public class Team : BaseObject
+    {
+        public int Id { get; set; }                 // Khóa chính
+        public string Name { get; set; }            // Tên nhóm
+        public string Slogan { get; set; }          // Khẩu hiểu của nhóm
+        public string Description { get; set; }     // Miêu tả nhóm
+
+        public Team()
+        {
+        }
+    }
+
+    //
     // Promotion: Chương trình khuyến mại
     //
     public class Promotion : BaseObject
@@ -90,23 +140,60 @@ namespace MVCwCMS.Models
     }
 
     //
-    // Customer: Khách hàng
+    // 6. Customer: Khách hàng
     //
     public class Customer : BaseObject
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string UserName { get; set; }
+        public string Description { get; set; }
+        public string Address { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
+        public string Facebook { get; set; }
+
+        public string Zalo { get; set; }
+
+        public int? CustomerGroupId { get; set; }
+
         public Customer()
         {
         }
     }
 
     //
-    // CustomerGroup: Nhóm khách hàng
+    // 7. CustomerGroup: Nhóm khách hàng
     //
     public class CustomerGroup : BaseObject
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string UserName { get; set; }
+
         public CustomerGroup()
         {
         }
+    }
+
+    //
+    // 8. Discount: Chiết khấu
+    //
+    public class Discount : BaseObject
+    {
+        public int Id { get; set; }                 // Khóa chính
+        public int CustomerId { get; set; }         // Khách hàng
+        public string Level { get; set; }           // Cấp
+        public decimal? Sale { get; set; }          // Doanh số
+        public decimal? CK { get; set; }            // Chiết khấu
+        public decimal? Capital { get; set; }       // Vốn
+        public decimal? Profit { get; set; }        // Lợi nhuận
+        public decimal? Bonus { get; set; }         // Thưởng
+        public decimal? Salary { get; set; }        // Lương
+        public decimal? TotalProfit { get; set; }   // Tổng lợi nhuận
+        public bool IsActive { get; set; }          // Hoạt động
     }
 
     //
