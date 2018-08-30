@@ -1,17 +1,182 @@
-﻿using MVCwCMS.Models;
-using System.Collections.Generic;
-using System.Data.Entity;
-
-namespace MVCwCMS.Data
+﻿namespace MVCwCMS.Migrations
 {
-    public class StoreSeedData : DropCreateDatabaseIfModelChanges<StoreEntities>
+    using MVCwCMS.Data;
+    using MVCwCMS.Models;
+    using System.Collections.Generic;
+    using System.Data.Entity.Migrations;
+
+    public sealed class Configuration : DbMigrationsConfiguration<StoreEntities>
     {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+        }
+
         protected override void Seed(StoreEntities context)
         {
+            GetProductCategories().ForEach(c => context.ProductCategories.Add(c));
+            GetProducts().ForEach(c => context.Products.Add(c));
+
             GetCategories().ForEach(c => context.Categories.Add(c));
             GetGadgets().ForEach(g => context.Gadgets.Add(g));
 
             context.Commit();
+        }
+
+        private static List<ProductCategory> GetProductCategories()
+        {
+            return new List<ProductCategory>
+            {
+                new ProductCategory {
+                    Id = 1,
+                    Name = "Mỹ phẩm"
+                }
+            };
+        }
+
+        private static List<Product> GetProducts()
+        {
+            return new List<Product>
+            {
+                new Product {
+                    CategoryId = 1,
+                    Name = "Sữa rửa mặt",
+                    Price = 280000,
+                    Code = "SRM"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Tẩy da chết sinh học",
+                    Price = 280000,
+                    Code = "TDCSH"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Kem nám",
+                    Price = 650000,
+                    Code = "KN"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Tắm trắng khô VV",
+                    Price = 550000,
+                    Code = "TTKVV"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Sữa tắm trắng da vàng 24K",
+                    Price = 380000,
+                    Code = "STTDV24K"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Tinh chất mụn (nhỏ)",
+                    Price = 350000,
+                    Code = "TCMN"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Tinh chất mụn (lớn)",
+                    Price = 850000,
+                    Code = "TCML"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Chống nắng sinh học",
+                    Price = 450000,
+                    Code = "CNSH"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Gel mờ thâm",
+                    Price = 450000,
+                    Code = "GMT"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Serum hạt vàng (nhỏ)",
+                    Price = 250000,
+                    Code = "SRHVN"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Mặt nạ cánh hoa hồng",
+                    Price = 280000,
+                    Code = "MNCHH"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Nước thần co lỗ chân lông",
+                    Price = 350000,
+                    Code = "NTCLCL"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Lăn mụn đầu đen",
+                    Price = 250000,
+                    Code = "LMDD"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Viên siêu dưỡng chất",
+                    Price = 850000,
+                    Code = "VSDC"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Phấn nước cushion",
+                    Price = 380000,
+                    Code = "PNCS"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Son tươi không chì",
+                    Price = 280000,
+                    Code = "STKC"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Kem body ngày",
+                    Price = 650000,
+                    Code = "KBDN"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Kem body đêm",
+                    Price = 450000,
+                    Code = "KBDD"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Mặt nạ detox thải độc",
+                    Price = 550000,
+                    Code = "MNDTTD"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Mặt nạ vàng 24K",
+                    Price = 280000,
+                    Code = "MNV24K"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Siêu chất 4 chức năng",
+                    Price = 850000,
+                    Code = "SC4CN"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Kem dưỡng đêm cao cấp",
+                    Price = 750000,
+                    Code = "KDDCC"
+                },
+                new Product {
+                    CategoryId = 1,
+                    Name = "Kem face lạnh",
+                    Price = 450000,
+                    Code = "KFL"
+                }
+            };
         }
 
         private static List<Category> GetCategories()

@@ -3,6 +3,7 @@ using MVCwCMS.Data;
 using MVCwCMS.Helpers;
 using MVCwCMS.Models;
 using System.Configuration;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
@@ -27,9 +28,6 @@ namespace MVCwCMS
 
         protected void Application_Start()
         {
-            //Init database
-            System.Data.Entity.Database.SetInitializer(new StoreSeedData());
-
             //Prevents information leakage from the X-AspNetMvc-Version header of the HTTP response
             MvcHandler.DisableMvcResponseHeader = true;
 

@@ -1599,6 +1599,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurations\CategoryConfiguration.cs" />
     <Compile Include="Configurations\GadgetConfiguration.cs" />
+    <Compile Include="Configurations\ProductCategoryConfiguration.cs" />
+    <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Controllers\AdminAdminPagesController.cs" />
     <Compile Include="Controllers\AdminGroupsController.cs" />
     <Compile Include="Controllers\AdminImpersonate.cs" />
@@ -1640,7 +1642,6 @@
     <Compile Include="Controllers\OutputNewsController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Data\StoreEntities.cs" />
-    <Compile Include="Data\StoreSeedData.cs" />
     <Compile Include="Filters\ExportModelStateToTempData.cs" />
     <Compile Include="Filters\ImportModelStateFromTempData.cs" />
     <Compile Include="Filters\IsFrontEndChildActionRestrictedAttribute.cs" />
@@ -1682,6 +1683,11 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Migrations\201808301728000_AddFirstVersion.cs" />
+    <Compile Include="Migrations\201808301728000_AddFirstVersion.Designer.cs">
+      <DependentUpon>201808301728000_AddFirstVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminPages.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Gadget.cs" />
@@ -1697,6 +1703,7 @@
     <Compile Include="Models\MediaTypes.cs" />
     <Compile Include="Models\MediaItems.cs" />
     <Compile Include="Models\MediaGalleries.cs" />
+    <Compile Include="Models\PosModel.cs" />
     <Compile Include="Models\News.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1961,6 +1968,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808301728000_AddFirstVersion.resx">
+      <DependentUpon>201808301728000_AddFirstVersion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings_News.it.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings_News.it.Designer.cs</LastGenOutput>

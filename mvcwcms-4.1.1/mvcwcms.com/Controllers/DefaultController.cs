@@ -13,6 +13,8 @@ namespace MVCwCMS.Controllers
     {
         public ActionResult Index(string languageCode, string segments)
         {
+            return RedirectToAction("Test", "Admin");
+
             GlobalConfiguration globalConfiguration = new GlobalConfigurations().GetGlobalConfiguration();
 
             if (!globalConfiguration.IsOffline || Request["OfflineCode"] == globalConfiguration.OfflineCode || Session["OfflineCode"].ConvertTo<string>(null, true) == globalConfiguration.OfflineCode)
